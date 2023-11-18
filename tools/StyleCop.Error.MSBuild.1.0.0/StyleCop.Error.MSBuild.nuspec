@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>StyleCop.Error.MSBuild</id>
+    <version>1.0.0</version>
+    <title>StyleCop.MsBuild.Errors</title>
+    <authors>Manish Kumar</authors>
+    <owners>Manish Kumar</owners>
+    <licenseUrl>https://bitbucket.org/Manishkp/stylecop.error.msbuild/src/810f5df1920f7ff27f8d5531af1a3d8bc1fa24d8/nugetSource/license.txt?at=master</licenseUrl>
+    <projectUrl>https://bitbucket.org/Manishkp/stylecop.error.msbuild</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Forces the Style cop warnings to appear as errors while building.</description>
+    <summary>Forces the Style cop warnings to appear as errors while building.</summary>
+    <releaseNotes>Thanks to StyleCop.MsBuild for providing the base version of nuget to run stylecop https://www.nuget.org/packages/StyleCop.MSBuild/</releaseNotes>
+    <tags>stylecop</tags>
+    <dependencies>
+      <dependency id="StyleCop.MSBuild" version="4.7.49" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cake.StyleCop</name>
+    </assembly>
+    <members>
+        <member name="T:Cake.StyleCop.NamespaceDoc">
+            <summary>
+            This namespace contains Stylecop functionality.
+            </summary>
+        </member>
+        <member name="T:Cake.Stylecop.StylecopAlias">
+            <summary>
+            Contains functionality for working with Stylecop.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StylecopAlias.StyleCopAnalyse(Cake.Core.ICakeContext,Cake.Stylecop.SettingsDelegate)">
+            <summary>
+            Analyses the project using stylecop.
+            </summary>
+            <example>
+            <code>
+            StyleCopAnalyse(settings => settings
+                .WithSolution(solutionFile)       
+            );
+            </code>
+            </example>
+            <param name="context">The Context.</param>
+            <param name="settingsDelegate">Optional settings passed to stylecop.</param>
+        </member>
+        <member name="M:Cake.Stylecop.StylecopAlias.StyleCopReport(Cake.Core.ICakeContext,Cake.Stylecop.ReportSettingsDelegate)">
+            <summary>
+            Generates summary report from a stylecop execution.
+            </summary>
+            <example>
+            <code>
+            StyleCopAnalyse(settings => settings
+                .WithSolution(solutionFile)
+                .WithSettings(settingsFile)
+                .ToResultFile(resultFile)
+            );
+            
+            StyleCopReport(settings => settings
+                .ToHtmlReport(htmlFile)
+                .AddResultFiles(resultFiles)
+            ); 
+            </code>
+            </example>
+            <param name="context">The context.</param>
+            <param name="settingsDelegate">Report generation settings.</param>
+        </member>
+        <member name="T:Cake.Stylecop.StylecopHandlers">
+            <summary>
+            Stylecop utility class.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StylecopHandlers.#ctor(Cake.Core.ICakeContext)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Cake.Stylecop.StylecopHandlers.TotalViolations">
+            <summary>
+            The total number of violations.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StylecopHandlers.OnOutputGenerated(System.Object,StyleCop.OutputEventArgs)">
+            <summary>
+            Called when Stylecop output has been generated.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The event args.</param>
+        </member>
+        <member name="M:Cake.Stylecop.StylecopHandlers.ViolationEncountered(System.Object,StyleCop.ViolationEventArgs)">
+            <summary>
+            Called when Stylecop has encountered a rule violation.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The event args.</param>
+        </member>
+        <member name="T:Cake.Stylecop.StyleCopReportSettings">
+            <summary>
+            A utility class for configuring stylecop output.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopReportSettings.#ctor">
+            <summary>
+            Creates a new instance of the StyleCopReportSettings class.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopReportSettings.ResultFiles">
+            <summary>
+            A collection of xml result files to merge for the report
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopReportSettings.HtmlReportFile">
+            <summary>
+            Outputs an html report using the default stylesheet or a custom one if specified in StyleSheet
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopReportSettings.StyleSheet">
+            <summary>
+            The StyleSheet Path
+            </summary>
+        </member>
+        <member name="T:Cake.Stylecop.SettingsDelegate">
+            <summary>
+            A proxy onto the StyleCopSettings type.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The settings.</returns>
+        </member>
+        <member name="T:Cake.Stylecop.ReportSettingsDelegate">
+            <summary>
+            A proxy onto the StyleCopReportSettings type.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The settings.</returns>
+        </member>
+        <member name="T:Cake.Stylecop.StyleCopRunner">
+            <summary>
+            The class that executes stylecop analysis.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopRunner.Execute(Cake.Core.ICakeContext,Cake.Stylecop.SettingsDelegate)">
+            <summary>
+            Starts an analysis run.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="settingsDelegate">The stylecop setting to use during the analysis.</param>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopRunner.Transform(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath)">
+            <summary>
+            Transforms the outputted report using an XSL transform file.
+            </summary>
+            <param name="htmlFile">The fully qualified path of the output html file.</param>
+            <param name="outputXmlFile">
+                The fully-qualified path of the report to transform.
+            </param>
+            <param name="transformFile">The filePath for the xslt transform</param>
+            <param name="context">The cake context.</param>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopRunner.AssemblyDirectory(System.Reflection.Assembly)">
+            <summary>
+            The Assembly Directory.
+            </summary>
+            <param name="assembly">Assembly to return the directory path for.</param>
+            <returns>The assemblies directory path.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopRunner.Report(Cake.Core.ICakeContext,Cake.Stylecop.ReportSettingsDelegate)">
+            <summary>
+            Starts the report aggregation process.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="settingsDelegate">The settings to use during report aggregation.</param>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopRunner.MergeResultFile(Cake.Core.ICakeContext,Cake.Core.IO.FilePathCollection)">
+            <summary>
+            Merges two or more Stylecop report files into a single xml document.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="resultFiles">A collection of report files to merge.</param>
+            <returns>The resultant Xml document.</returns>
+        </member>
+        <member name="T:Cake.Stylecop.StyleCopSettings">
+            <summary>
+            Contains configuration for a stylecop analysis execution.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettings.#ctor">
+            <summary>
+            Creates a new instance of the StyleCopSettings class.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.SolutionFile">
+            <summary>
+            The solution file
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.WriteResultsCache">
+            <summary>
+            Indicates whether to write results cache files.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.FullAnalyze">
+            <summary>
+            Determines whether to ignore cache files and reanalyze
+            every file from scratch.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.LoadFromDefaultPath">
+            <summary>
+            Indicates whether to load addins
+            from the default path, where the core binary is located.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.SettingsFile">
+            <summary>
+            The path to the settings to load or
+            null to use the default project settings files.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.ResultsFile">
+            <summary>
+            Optional path to the results output file.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.Addins">
+            <summary>
+            The list of paths to search under for parser and analyzer addins.
+            Can be null if no addin paths are provided.
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.HtmlReportFile">
+            <summary>
+            Outputs an html report using the default stylesheet or a custom one if specified in StyleSheet
+            </summary>
+        </member>
+        <member name="P:Cake.Stylecop.StyleCopSettings.StyleSheet">
+            <summary>
+            The StyleSheet Path
+            </summary>
+        </member>
+        <member name="T:Cake.Stylecop.StyleCopSettingsExtensions">
+            <summary>
+            Extensions that enable a fluent interface onto the StyleCopSettings type.
+            </summary>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.WithSolution(Cake.Stylecop.StyleCopSettings,Cake.Core.IO.FilePath)">
+            <summary>
+            Specifies the .net solution to analyse.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="solutionFile">FilePath of the .sln file.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.WithSettings(Cake.Stylecop.StyleCopSettings,Cake.Core.IO.FilePath)">
+            <summary>
+            Specifies the Stylecop.settings file path.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="settingsFile">FilePath of the Stylecop.settings file.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.WithAddins(Cake.Stylecop.StyleCopSettings,Cake.Core.IO.DirectoryPath[])">
+            <summary>
+            Specifies which directories to load Stylecop addins from. 
+            If none are specified and LoadFromDefaultPath is true all .dll files next to the stylecop.dll file will be added as potential addins.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="addins">Directory paths for Stylecop Addins.</param>
+            <returns>Settings object;</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.UsingResultCache(Cake.Stylecop.StyleCopSettings,System.Boolean,System.Boolean)">
+            <summary>
+            Use the stylecop result cache to speed up analysis.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="enabled">True (default) to use cache, otherwise false.</param>
+            <param name="fullAnalyze">Perform full analysis.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.LoadFromDefaultPath(Cake.Stylecop.StyleCopSettings,System.Boolean)">
+            <summary>
+            Indicates if Stylecop should load addins from the same directory as stylecop.dll.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="enabled">True (default) to load .dll next to stylecop.dll, otherwise false.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.ToResultFile(Cake.Stylecop.StyleCopSettings,Cake.Core.IO.FilePath)">
+            <summary>
+            Indicates the filepath to output the stylecop results to.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="resultFile">The output filepath.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.ToHtmlReport(Cake.Stylecop.StyleCopSettings,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath)">
+            <summary>
+            Indicates the results should be outputted as an HTML report.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="htmlFile">The filepath for the html report.</param>
+            <param name="xsltStylesheet">(Optional) The filepath for the xslt stylesheet. If omitted the default supplied with Cake.Stylecop is used.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.ToHtmlReport(Cake.Stylecop.StyleCopReportSettings,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath)">
+            <summary>
+            Indicates the results should be outputted as an HTML report.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="htmlFile">The filepath for the html report.</param>
+            <param name="xsltStylesheet">(Optional) The filepath for the xslt stylesheet. If omitted the default supplied with Cake.Stylecop is used.</param>
+            <returns>Settings object.</returns>
+        </member>
+        <member name="M:Cake.Stylecop.StyleCopSettingsExtensions.AddResultFiles(Cake.Stylecop.StyleCopReportSettings,Cake.Core.IO.FilePathCollection)">
+            <summary>
+            Allows multiple results files to be aggregated into a single report output.
+            </summary>
+            <param name="settings">The settings object.</param>
+            <param name="resultFiles">The report files to aggregate.</param>
+            <returns>Settings object.</returns>
+        </member>
+    </members>
+</doc>

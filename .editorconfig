@@ -1,0 +1,7 @@
+
+[*]
+csharp_new_line_before_open_brace = none
+
+dotnet_naming_style.methodstyle.required_suffix =
+dotnet_naming_style.methodstyle.capitalization = camel_case
+dotnet_naming_style.methodstyle.severity = error

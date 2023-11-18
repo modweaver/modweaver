@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Fecorous_002F_002Esteam_002Fdebian_002Dinstallation_002Fsteamapps_002Fcommon_002FSpiderHeck_002FSpiderHeckApp_005FData_002FManaged_002FUnityEngine_002ECoreModule_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Fecorous_002F_002Esteam_002Fdebian_002Dinstallation_002Fsteamapps_002Fcommon_002FSpiderHeck_002FSpiderHeckApp_005FData_002FManaged_002FUnityEngine_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/ecorous/.steam/debian-installation/steamapps/common/SpiderHeck/BepInEx/core/BepInEx.Preloader.Unity.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/DotNetCliExePath/@EntryValue">/usr/lib/dotnet/dotnet</s:String>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/Build/BuildTool/MsbuildVersion/@EntryValue">983040</s:Int64>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">/usr/lib/mono/msbuild/15.0/bin/MSBuild.dll</s:String>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/Build/BuildTool/MsBuildSolutionLoadingNodeCount/@EntryValue">4</s:Int64>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=modweaver/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "guid": "org.modweaver.test",
+        "id": "org.modweaver.test",
         "version": "1.0.0",
         "title": "Test mod",
         "authors": [

@@ -156,6 +156,8 @@
     <ItemGroup>
         <Compile Include="ConsoleCreator.cs" />
         <Compile Include="CoreMain.cs" />
+        <Compile Include="Mod.cs" />
+        <Compile Include="ModMainClassAttribute.cs" />
         <Compile Include="ModManifest.cs" />
         <Compile Include="Patches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>

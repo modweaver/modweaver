@@ -42,6 +42,107 @@
           <LogicalName>mw_manifest</LogicalName>
       </EmbeddedResource>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\modweaver.core\modweaver.core.csproj">
+        <Project>{a9311596-ae2a-47f8-8e3c-3527579d30fd}</Project>
+        <Name>modweaver.core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Accessibility">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Accessibility.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp-firstpass">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp-firstpass.dll</HintPath>
+      </Reference>
+      <Reference Include="Cinemachine">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Cinemachine.dll</HintPath>
+      </Reference>
+      <Reference Include="DDebug">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DDebug.dll</HintPath>
+      </Reference>
+      <Reference Include="DoozyEngine">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DoozyEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="DOTween">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.dll</HintPath>
+      </Reference>
+      <Reference Include="DOTween.Modules">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.Modules.dll</HintPath>
+      </Reference>
+      <Reference Include="EasySave3">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\EasySave3.dll</HintPath>
+      </Reference>
+      <Reference Include="GdkUtilities">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\GdkUtilities.dll</HintPath>
+      </Reference>
+      <Reference Include="I2">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\I2.dll</HintPath>
+      </Reference>
+      <Reference Include="JunTween">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\JunTween.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Security">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Mono.Security.dll</HintPath>
+      </Reference>
+      <Reference Include="MyScriptAssembly">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\MyScriptAssembly.dll</HintPath>
+      </Reference>
+      <Reference Include="NewAssembly">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\NewAssembly.dll</HintPath>
+      </Reference>
+      <Reference Include="NLog">
+        <HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+      </Reference>
+      <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+      </Reference>
+      <Reference Include="SteamP2P Transport for Netcode for GameObjects">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\SteamP2P Transport for Netcode for GameObjects.dll</HintPath>
+      </Reference>
+      <Reference Include="Steamworks.NET">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Steamworks.NET.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.2D.Animation.Runtime">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Animation.Runtime.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.2D.Common.Runtime">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Common.Runtime.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Collections">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Collections.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.InputSystem">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.InputSystem.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Mathematics">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Mathematics.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Netcode.Components">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Components.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Netcode.Runtime">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Runtime.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.TextMeshPro">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.TextMeshPro.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Timeline">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Timeline.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+        <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.UI.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="packages.config" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

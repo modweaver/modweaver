@@ -23,13 +23,15 @@ namespace modweaver.core {
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
-        internal static List<ModManifest> mods = new() { loader };
+        internal static List<Mod> mods = new();
+        private static Dictionary<string, ModManifest> discoveredMods = new();
 
-        public ModManifest getModById(string id) {
-            return mods.Find(manifest => manifest.metadata.id == id);
+        public Mod getModById(string id) {
+            return mods.Find(mod => mod.Metadata.id == id);
         }
 
         public static void discoverMods() {
+            discoveredMods.Clear();
             var modsPath = Path.Combine(Paths.modweaverDir, "mods");
             foreach (var dllPath in Directory.EnumerateFiles(modsPath, "*.dll", SearchOption.AllDirectories)) {
                 var dllName = Path.GetFileName(dllPath);
@@ -58,19 +60,61 @@ namespace modweaver.core {
                     continue;
                 }
                 
+                //TODO: Check dependencies and incompatibilities here
+                
                 Logger.Info("Mod {} version {} has been found", 
                     manifest.metadata.title, manifest.metadata.version);
+                
+                discoveredMods.Add(dllPath, manifest);
             }
         }
         
         public static void loadMods() {
-            
+            foreach (var discovered in discoveredMods) {
+                var assembly = Assembly.LoadFrom(discovered.Key);
+                var manifest = discovered.Value;
+
+                var types = assembly.GetTypes()
+                    .Where(t => t.IsClass)
+                    .Where(t => !t.IsAbstract)
+                    .Where(t => t.BaseType != null)
+                    .Where(t => t.BaseType == typeof(Mod))
+                    .Where(t => t.GetCustomAttributes().Any(attr => attr.GetType() == typeof(ModMainClassAttribute)))
+                    .ToArray();
+
+                if (types.Length < 1) {
+                    Logger.Warn("Mod {} contains no valid main classes!", manifest.metadata.title);
+                    continue;
+                }
+                var mainClassType = types[0];
+
+                if (types.Length > 1) {
+                    Logger.Warn("Mod {} contains multiple main classes! Loading only the first class ({}).",
+                        manifest.metadata.title, mainClassType.FullName);
+                    continue;
+                }
+                
+                Logger.Debug("Creating instance of main class {} for mod {}",
+                    manifest.metadata.title, mainClassType.Name);
+                
+                var instance = (Mod) Activator.CreateInstance(mainClassType);
+                instance.Manifest = manifest;
+                instance.Assembly = assembly;
+                instance.Logger = LogManager.GetLogger(manifest.metadata.id);
+                
+                instance.Init();
+                mods.Add(instance);
+            }
+
+            mods.All(mod => {
+                mod.Ready();
+                return true;
+            });
         }
 
         // this is called by modweaver.preload on unity scene load.
         public static void handoff() {
             ConsoleCreator.Create();
-            Console.WriteLine("hlep");
             LogManager.Setup().LoadConfiguration(b => {
                 b.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToConsole();
                 b.ForLogger().FilterMinLevel(LogLevel.Trace)
@@ -82,22 +126,23 @@ namespace modweaver.core {
             
             Logger.Debug("Discovering mods...");
             discoverMods();
+            Logger.Debug("Loading mods...");
+            loadMods();
+            Logger.Info("All ({ModCount}) mods have been loaded!", mods.Count);
         }
         
         // do mod load before this!
         public static void addModsToMenu() {
             Logger.Debug("Adding mods to game menu");
             foreach (var mod in mods) {
-                ModsMenu.instance.CreateButton(mod.metadata.title, () => {
-                    var page = Announcer.ModsPopup(mod.metadata.title);
-                    var mod2 = mod;
-                    mod2.modsMenuPopup = page;
-                    mods.Remove(mod);
-                    mods.Add(mod2);
-                    page.CreateParagraph($"ID: {mod.metadata.id}");
-                    page.CreateParagraph($"Version: {mod.metadata.version}");
-                    page.CreateParagraph($"Authors: {string.Join(", ", mod.metadata.authors)}");
-                    page.CreateParagraph($"Designed for SpiderHeck version: {mod.metadata.gameVersion}");
+                ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
+                    var page = Announcer.ModsPopup(mod.Metadata.title);
+                    page.CreateParagraph($"ID: {mod.Metadata.id}");
+                    page.CreateParagraph($"Version: {mod.Metadata.version}");
+                    page.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
+                    page.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
+                    page.CreateDivider();
+                    mod.OnGUI(page);
                 });
             }
         }

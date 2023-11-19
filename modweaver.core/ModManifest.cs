@@ -23,7 +23,5 @@ namespace modweaver {
         public Metadata metadata { get; set; }
         public List<Dependency> dependencies { get; set; }
         public List<string> incompatibilities { get; set; }
-        
-        public ModsMenuPopup modsMenuPopup { get; internal set; }
     }
 }

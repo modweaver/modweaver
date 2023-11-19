@@ -70,11 +70,11 @@ namespace modweaver.api.API {
             return result;
         }
 
-        private void spawnWeapon(int selectedWeapon) {
+        /*private void spawnWeapon(int selectedWeapon) {
             GameObject gameObject = GameObject.FindGameObjectWithTag("PlayerRigidbody");
             Vector2    a          = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-            bool flag = !Physics2D.Raycast(a + new Vector2(0f, 10f), gameObject.transform.up, 0.1f,
-                                           GameController.instance.worldLayers);
+            //bool flag = !Physics2D.Raycast(a + new Vector2(0f, 10f), gameObject.transform.up, 0.1f,
+            //                               GameController.instance.worldLayers);
             bool flag2 = flag;
             if (flag2) {
                 //Object.Instantiate(getVersusWeapons()[selectedWeapon].weapon, gameObject.transform.position, gameObject.transform.rotation);
@@ -82,6 +82,6 @@ namespace modweaver.api.API {
                                           gameObject.transform.position,
                                           gameObject.transform.rotation);
             }
-        }
+        }*/
     }
 }

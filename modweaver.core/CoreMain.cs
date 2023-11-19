@@ -144,13 +144,13 @@ namespace modweaver.core {
             Logger.Debug("Adding mods to game menu");
             foreach (var mod in mods) {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
-                    var page = Announcer.ModsPopup(mod.Metadata.title);
-                    page.CreateParagraph($"ID: {mod.Metadata.id}");
-                    page.CreateParagraph($"Version: {mod.Metadata.version}");
-                    page.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
-                    page.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
-                    page.CreateDivider();
-                    mod.OnGUI(page);
+                    var ui = Announcer.ModsPopup(mod.Metadata.title);
+                    ui.CreateParagraph($"ID: {mod.Metadata.id}");
+                    ui.CreateParagraph($"Version: {mod.Metadata.version}");
+                    ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
+                    ui.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
+                    ui.CreateDivider();
+                    mod.OnGUI(ui);
                 });
             }
         }

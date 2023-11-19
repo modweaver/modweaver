@@ -4,9 +4,11 @@
 using System;
 using System.Reflection;
 using System.IO;
+using HarmonyLib;
 using HarmonyLib.Tools;
 using modweaver.preload;
 using UnityEngine;
+using Patches = modweaver.preload.Patches;
 
 namespace Doorstop {
     public class Entrypoint {
@@ -34,8 +36,20 @@ namespace Doorstop {
 
         // need for doorstop entrypoint
         public static void Start() {
+            try {
+                InitPreloader();
+            }
+            catch (Exception e) {
+                File.WriteAllText("modweaver/initex.txt", e.ToString());
+            }
+        }
+        
+        public static void InitPreloader() {
             ModweaverEnvironment.getVars();
-            var harmonyFile = Path.Combine(ModweaverEnvironment.doorstopGameExecutable ?? ".", "modweaver/libs/0Harmony.dll");
+            ConsoleCreator.Create();
+            
+            var gameDirectory = Path.GetDirectoryName(ModweaverEnvironment.doorstopGameExecutable) ?? ".";
+            var harmonyFile = Path.Combine(gameDirectory, "modweaver/libs/0Harmony.dll");
             var ass = Assembly.LoadFile(harmonyFile);
             File.WriteAllText("modweaver/latest.log", $"[modweaver] Assembly@ : {ass.FullName}");
             HarmonyFileLog.Enabled = true;
@@ -47,9 +61,7 @@ namespace Doorstop {
             Console.WriteLine("[modweaver.preloader] Loading1!");
             Console.WriteLine("[modweaver.preloader] Loading2!");
             
-
-            var gamePath = Path.GetDirectoryName(ModweaverEnvironment.doorstopGameExecutable) ?? ".";
-            silentExceptionLog = Path.Combine(gamePath, silentExceptionLog);
+            silentExceptionLog = Path.Combine(gameDirectory, silentExceptionLog);
 
             
 

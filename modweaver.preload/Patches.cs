@@ -45,7 +45,7 @@ namespace modweaver.preload {
                 textMeshInfo.SetValue(__instance, textMesh);
 
                 hasDoneTextPatch = true;*/
-                //__instance.textMesh.SetText("SPIDERHECK; ModWeaver ALPHA 0.1.0");
+                __instance.textMesh.SetText("SPIDERHECK; ModWeaver ALPHA 0.1.0");
                 hasDoneTextPatch = true;
             }
         }

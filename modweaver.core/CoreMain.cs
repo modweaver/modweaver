@@ -73,6 +73,8 @@ namespace modweaver.core {
                 
                 discoveredMods.Add(dllPath, manifest);
             }
+            
+            //TODO: verify dependencies and incompatibilities
         }
         
         public static void loadMods() {
@@ -101,7 +103,7 @@ namespace modweaver.core {
                 }
                 
                 Logger.Debug("Creating instance of main class {} for mod {}",
-                    manifest.metadata.title, mainClassType.Name);
+                    mainClassType.Name, manifest.metadata.title);
                 
                 var instance = (Mod) Activator.CreateInstance(mainClassType);
                 instance.Manifest = manifest;

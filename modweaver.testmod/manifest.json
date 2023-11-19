@@ -1,0 +1,13 @@
+{
+    "metadata": {
+        "guid": "org.modweaver.test",
+        "version": "1.0.0",
+        "title": "Test mod",
+        "authors": [
+            "reddust9"
+        ],
+        "gameVersion": "1.4"
+    },
+    "dependencies": [],
+    "incompatibilities": []
+}

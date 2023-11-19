@@ -100,6 +100,12 @@
         <Reference Include="NewAssembly, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\NewAssembly.dll</HintPath>
         </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="NLog">
+          <HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+        </Reference>
         <Reference Include="Pathfinding.Ionic.Zip.Reduced, Version=1.9.1.9000, Culture=neutral, processorArchitecture=MSIL">
           <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
         </Reference>
@@ -148,6 +154,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ConsoleCreator.cs" />
         <Compile Include="CoreMain.cs" />
         <Compile Include="ModManifest.cs" />
         <Compile Include="Patches.cs" />

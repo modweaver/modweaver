@@ -51,6 +51,8 @@ then
 		cp "./bin/Mono.Cecil.Rocks.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/MonoMod.RuntimeDetour.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/MonoMod.Utils.dll" "$MODWEAVER_LIBS_TARGET"
+		cp "./bin/Newtonsoft.Json.dll" "$MODWEAVER_LIBS_TARGET"
+		cp "./bin/NLog.dll" "$MODWEAVER_LIBS_TARGET"
 		echo "Finished"
 	fi
 fi

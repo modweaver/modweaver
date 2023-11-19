@@ -28,7 +28,8 @@ namespace modweaver.preload {
                 array = Array.Empty<string>();
             doorstopDllSearchDirs = array;
 
-            Paths.modweaverDir = doorstopGameExecutable;
+            Paths.spiderheckDir = Path.GetDirectoryName(doorstopGameExecutable);
+            Paths.modweaverDir = Path.Combine(Paths.spiderheckDir, "modweaver");
             Paths.libsDir = Path.Combine(Paths.modweaverDir, "libs");
         }
     }

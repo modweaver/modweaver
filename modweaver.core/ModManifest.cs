@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 
 namespace modweaver {
-    public class ModManifest
-    {
+    public class ModManifest {
+        public const string embeddedResourceName = "mw_manifest";
+        
         public class Metadata
         {
             public string id { get; set; }

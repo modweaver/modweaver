@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
 namespace modweaver.preload {
@@ -31,8 +32,9 @@ namespace modweaver.preload {
             stdoutStream = new FileStream(sfh, FileAccess.Write);
             writer = new StreamWriter(stdoutStream);
             writer.AutoFlush = true;
-            writer.WriteLine("Hello, console!");
+            writer.WriteLine("Console allocated");
             Console.SetOut(writer);
+            Console.WriteLine("Configured stdout");
         }
 
         public static void Destroy() {
@@ -43,5 +45,20 @@ namespace modweaver.preload {
             writer.Close();
             Win32.FreeConsole();
         }
+    }
+    
+    internal static class Win32 {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool AllocConsole();
+        [DllImport("kernel32.dll", SetLastError = false)]
+        public static extern bool FreeConsole();
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern IntPtr CreateFile(string fileName,
+            uint desiredAccess,
+            int shareMode,
+            IntPtr securityAttributes,
+            int creationDisposition,
+            int flagsAndAttributes,
+            IntPtr templateFile);
     }
 }

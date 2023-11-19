@@ -32,12 +32,12 @@ namespace Doorstop {
         
         public static void InitPreloader() {
             ModweaverEnvironment.getVars();
-            ConsoleCreator.Create();
+            //ConsoleCreator.Create();
             
             var gameDirectory = Path.GetDirectoryName(ModweaverEnvironment.doorstopGameExecutable) ?? ".";
             var harmonyFile = Path.Combine(gameDirectory, "modweaver/libs/0Harmony.dll");
             var ass = Assembly.LoadFile(harmonyFile);
-            File.WriteAllText("modweaver/latest.log", $"[modweaver] Assembly@ : {ass.FullName}");
+            //File.WriteAllText("modweaver/latest.log", $"[modweaver] Assembly@ : {ass.FullName}");
             HarmonyFileLog.Enabled = true;
             AppDomain.CurrentDomain.AssemblyResolve += resolveCurrentDirectory;
             // https://harmony.pardeike.net/articles/patching-edgecases.html#patching-too-early-missingmethodexception-in-unity

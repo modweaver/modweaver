@@ -59,8 +59,14 @@ namespace modweaver.core {
                     Logger.Warn("Mod {} has no metadata in its manifest! Skipping load", dllName);
                     continue;
                 }
-                
-                //TODO: Check dependencies and incompatibilities here
+
+                if (string.IsNullOrWhiteSpace(manifest.metadata.title) ||
+                    string.IsNullOrWhiteSpace(manifest.metadata.id) ||
+                    string.IsNullOrWhiteSpace(manifest.metadata.version) ||
+                    string.IsNullOrWhiteSpace(manifest.metadata.gameVersion) ||
+                    !manifest.metadata.authors.Any()) {
+                    Logger.Warn("Mod {} is missing one or more of its metadata fields! Skipping load", dllName);
+                }
                 
                 Logger.Info("Mod {} version {} has been found", 
                     manifest.metadata.title, manifest.metadata.version);

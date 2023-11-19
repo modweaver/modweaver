@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 GAME_DIRECTORY=""
 MODWEAVER_COPY_TARGET=""
 SHOULD_CONTINUE=""

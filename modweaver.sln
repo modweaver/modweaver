@@ -6,6 +6,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.preload", "modwea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.api", "modweaver.api\modweaver.api.csproj", "{C0937567-94F2-4679-894E-2B6B15F839EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2A5A13DE-5224-4873-9E9B-D2413A464810}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		install.sh = install.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

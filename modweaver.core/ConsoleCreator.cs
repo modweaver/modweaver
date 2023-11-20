@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
-namespace modweaver.preload {
+namespace modweaver.core {
     internal static class ConsoleCreator {
         private static bool initialised;
         private static IntPtr stdoutHandle;

@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Tomlyn;
 
-namespace modweaver {
+namespace modweaver.core {
     public class ModManifest {
-        public const string embeddedResourceName = "mw_manifest";
+        public const string embeddedResourceName = "mw.mod.toml";
         
         public class Metadata
         {

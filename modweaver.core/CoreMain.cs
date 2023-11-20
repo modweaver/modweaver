@@ -6,12 +6,14 @@ using System.Reflection;
 using modweaver.preload;
 using Newtonsoft.Json;
 using NLog;
+using Tomlyn;
 
 namespace modweaver.core {
     public class CoreMain {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
         internal static List<Mod> mods = new();
+        
         private static Dictionary<string, ModManifest> discoveredMods = new();
 
         public Mod getModById(string id) {
@@ -37,11 +39,19 @@ namespace modweaver.core {
                     manifestText = reader.ReadToEnd();
                 }
 
-                var manifest = JsonConvert.DeserializeObject<ModManifest>(manifestText);
-                if (manifest == null) {
-                    Logger.Warn("Mod {} has an invalid manifest file! Skipping load", dllName);
+                var tmo = new TomlModelOptions();
+                tmo.ConvertPropertyName = s => s;
+                tmo.ConvertFieldName = s => s;
+                ModManifest manifest;
+                try {
+                    manifest = Toml.ToModel<ModManifest>(manifestText);
+                }
+                catch (Exception e) {
+                    Logger.Warn("Mod {0} has an invalid manifest file! Error: {1}", dllName, e.Message);
                     continue;
                 }
+
+                //var manifest = JsonConvert.DeserializeObject<ModManifest>(manifestText);
 
                 if (manifest.metadata == null) {
                     Logger.Warn("Mod {} has no metadata in its manifest! Skipping load", dllName);
@@ -131,6 +141,26 @@ namespace modweaver.core {
         // do mod load before this!
         public static void addModsToMenu() {
             Logger.Debug("Adding mods to game menu");
+            
+            var sh = BuiltInMods.spiderheck.metadata;
+            var mw = BuiltInMods.modweaver.metadata;
+            
+            ModsMenu.instance.CreateButton(sh.title, () => {
+                var ui = Announcer.ModsPopup(sh.title);
+                ui.CreateParagraph($"ID: {sh.id}");
+                ui.CreateParagraph($"Version: {sh.version}");
+                ui.CreateParagraph($"Authors: {string.Join(", ", sh.authors)}");
+                //ui.CreateDivider();
+            });
+            ModsMenu.instance.CreateButton(mw.title, () => {
+                var ui = Announcer.ModsPopup(mw.title);
+                ui.CreateParagraph($"ID: {mw.id}");
+                ui.CreateParagraph($"Version: {mw.version}");
+                ui.CreateParagraph($"Authors: {string.Join(", ", mw.authors)}");
+                ui.CreateParagraph($"Designed for SpiderHeck version: {mw.gameVersion}");
+                //ui.CreateDivider();
+            });
+            
             foreach (var mod in mods) {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
                     var ui = Announcer.ModsPopup(mod.Metadata.title);
@@ -138,10 +168,11 @@ namespace modweaver.core {
                     ui.CreateParagraph($"Version: {mod.Metadata.version}");
                     ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
                     ui.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
-                    ui.CreateDivider();
                     mod.OnGUI(ui);
                 });
             }
+
+            
         }
     }
 }

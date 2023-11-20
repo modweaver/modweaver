@@ -3,7 +3,7 @@ using System.Reflection;
 using modweaver.core;
 using NLog;
 
-namespace modweaver {
+namespace modweaver.core {
     public abstract class Mod {
         public static TMod get<TMod>() where TMod : Mod {
             var asm = typeof(TMod).Assembly;

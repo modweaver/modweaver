@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using modweaver.core;
 
 namespace modweaver.testmod {
     [ModMainClass]

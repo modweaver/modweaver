@@ -53,6 +53,7 @@ then
 		cp "./bin/MonoMod.Utils.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/Newtonsoft.Json.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/NLog.dll" "$MODWEAVER_LIBS_TARGET"
+		cp "./bin/Tomlyn.dll" "$MODWEAVER_LIBS_TARGET"
 		echo "Finished"
 	fi
 fi

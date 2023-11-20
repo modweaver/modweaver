@@ -38,8 +38,8 @@
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Include="manifest.json">
-            <LogicalName>mw_manifest</LogicalName>
+        <EmbeddedResource Include="mw.mod.toml">
+            <LogicalName>mw.mod.toml</LogicalName>
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
@@ -142,6 +142,9 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="bin\Debug\modweaver.testmod.dll" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

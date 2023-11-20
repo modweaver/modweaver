@@ -1,6 +1,6 @@
 using System;
 
-namespace modweaver {
+namespace modweaver.core {
     [AttributeUsage(AttributeTargets.Class)]
     public class ModMainClassAttribute : Attribute {
         

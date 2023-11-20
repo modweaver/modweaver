@@ -1,0 +1,11 @@
+dependencies = []
+incompatibilities = []
+
+[metadata]
+id = "org.modweaver.testmod"
+version = "1.0.0"
+title = "Test Mod"
+authors = [
+    "reddust9"
+]
+game_version = "1.4"

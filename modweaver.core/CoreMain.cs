@@ -18,7 +18,7 @@ namespace modweaver.core {
             return mods.Find(mod => mod.Metadata.id == id);
         }
 
-        public static void discoverMods() {
+        private static void discoverMods() {
             discoveredMods.Clear();
             var modsPath = Path.Combine(Paths.modweaverDir, "mods");
             foreach (var dllPath in Directory.EnumerateFiles(modsPath, "*.dll", SearchOption.AllDirectories)) {
@@ -64,8 +64,8 @@ namespace modweaver.core {
             
             //TODO: verify dependencies and incompatibilities
         }
-        
-        public static void loadMods() {
+
+        private static void loadMods() {
             foreach (var discovered in discoveredMods) {
                 var assembly = Assembly.LoadFrom(discovered.Key);
                 var manifest = discovered.Value;

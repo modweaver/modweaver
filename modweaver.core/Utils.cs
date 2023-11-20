@@ -3,7 +3,7 @@ using System.IO;
 
 namespace modweaver.core {
     public class Utils {
-        
+        public const string version = "0.1.0";
     }
 
     public static class Paths {

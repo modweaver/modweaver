@@ -9,18 +9,6 @@ using NLog;
 
 namespace modweaver.core {
     public class CoreMain {
-        internal static ModManifest loader = new() {
-            metadata = new ModManifest.Metadata {
-                id = "org.modweaver.loader",
-                version = "0.1.0",
-                title = "ModWeaver",
-                authors = new List<string> { "ModWeaver Team" },
-                gameVersion = "1.4"
-            },
-            dependencies = new List<ModManifest.Dependency>(),
-            incompatibilities = new List<string>()
-        };
-
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
         internal static List<Mod> mods = new();

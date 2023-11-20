@@ -2,22 +2,16 @@
 // ReSharper disable once CheckNamespace
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using System.IO;
-using HarmonyLib;
+using System.Reflection;
 using HarmonyLib.Tools;
 using modweaver.core;
 using modweaver.preload;
-using MonoMod.Utils;
-using UnityEngine;
 using UnityEngine.SceneManagement;
-using Patches = modweaver.preload.Patches;
 
 namespace Doorstop {
     public class Entrypoint {
-
-        private static bool hasLoadedCore = false;
+        private static bool hasLoadedCore;
         private static string preloaderPath;
 
         // need for doorstop entrypoint
@@ -29,11 +23,11 @@ namespace Doorstop {
                 File.WriteAllText("modweaver/preloader_init_error.txt", e.ToString());
             }
         }
-        
+
         public static void InitPreloader() {
             ModweaverEnvironment.getVars();
             //ConsoleCreator.Create();
-            
+
             var gameDirectory = Path.GetDirectoryName(ModweaverEnvironment.doorstopGameExecutable) ?? ".";
             var harmonyFile = Path.Combine(gameDirectory, "modweaver/libs/0Harmony.dll");
             var ass = Assembly.LoadFile(harmonyFile);
@@ -43,7 +37,7 @@ namespace Doorstop {
             // https://harmony.pardeike.net/articles/patching-edgecases.html#patching-too-early-missingmethodexception-in-unity
             SceneManager.sceneLoaded += sceneLoadHandler;
         }
-        
+
         // handoff to core
         private static void sceneLoadHandler(Scene s, LoadSceneMode l) {
             if (hasLoadedCore) return;

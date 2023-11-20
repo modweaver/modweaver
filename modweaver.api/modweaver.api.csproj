@@ -35,126 +35,126 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony">
-          <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
+            <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
         </Reference>
         <Reference Include="Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Accessibility.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Accessibility.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp-firstpass.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Assembly-CSharp-firstpass.dll</HintPath>
         </Reference>
         <Reference Include="Cinemachine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Cinemachine.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Cinemachine.dll</HintPath>
         </Reference>
         <Reference Include="DDebug, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DDebug.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DDebug.dll</HintPath>
         </Reference>
         <Reference Include="DoozyEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DoozyEngine.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DoozyEngine.dll</HintPath>
         </Reference>
         <Reference Include="DOTween, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.dll</HintPath>
         </Reference>
         <Reference Include="DOTween.Modules, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.Modules.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\DOTween.Modules.dll</HintPath>
         </Reference>
         <Reference Include="EasySave3, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\EasySave3.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\EasySave3.dll</HintPath>
         </Reference>
         <Reference Include="GdkUtilities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\GdkUtilities.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\GdkUtilities.dll</HintPath>
         </Reference>
         <Reference Include="I2, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\I2.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\I2.dll</HintPath>
         </Reference>
         <Reference Include="JunTween, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\JunTween.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\JunTween.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Mdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Pdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Mono.Security.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Mono.Security.dll</HintPath>
         </Reference>
         <Reference Include="MyScriptAssembly, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\MyScriptAssembly.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\MyScriptAssembly.dll</HintPath>
         </Reference>
         <Reference Include="NewAssembly, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\NewAssembly.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\NewAssembly.dll</HintPath>
         </Reference>
         <Reference Include="Pathfinding.Ionic.Zip.Reduced, Version=1.9.1.9000, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
         </Reference>
         <Reference Include="SteamP2P Transport for Netcode for GameObjects, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\SteamP2P Transport for Netcode for GameObjects.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\SteamP2P Transport for Netcode for GameObjects.dll</HintPath>
         </Reference>
         <Reference Include="Steamworks.NET, Version=15.0.1.0, Culture=neutral, processorArchitecture=Amd64">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Steamworks.NET.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Steamworks.NET.dll</HintPath>
         </Reference>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
         <Reference Include="System.Xml"/>
         <Reference Include="Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Animation.Runtime.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Animation.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="Unity.2D.Common.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Common.Runtime.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Common.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Collections, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Collections.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Collections.dll</HintPath>
         </Reference>
         <Reference Include="Unity.InputSystem, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.InputSystem.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.InputSystem.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Mathematics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Mathematics.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Mathematics.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Netcode.Components, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Components.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Components.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Netcode.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Runtime.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Netcode.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.TextMeshPro.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.TextMeshPro.dll</HintPath>
         </Reference>
         <Reference Include="Unity.Timeline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Timeline.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.Timeline.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.Physics2DModule">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.Physics2DModule.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.Physics2DModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.UI.dll</HintPath>
+            <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\UnityEngine.UI.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="API\Modifiers.cs" />
-        <Compile Include="API\Weapons.cs" />
-        <Compile Include="Extensions\TypeExtensions.cs" />
+        <Compile Include="API\Modifiers.cs"/>
+        <Compile Include="API\Weapons.cs"/>
+        <Compile Include="Extensions\TypeExtensions.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="Utilities\Logging.cs" />
-        <Compile Include="Utilities\PluginUtilities.cs" />
+        <Compile Include="Utilities\Logging.cs"/>
+        <Compile Include="Utilities\PluginUtilities.cs"/>
     </ItemGroup>
     <ItemGroup>
-      <None Include="App.config" />
-      <None Include="packages.config" />
+        <None Include="App.config"/>
+        <None Include="packages.config"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@ using System.IO;
 using modweaver.core;
 using Newtonsoft.Json.Linq;
 
-namespace modweaver {
+namespace modweaver.core {
     public class ModConfig {
         private readonly string modId;
         private readonly string configDir;

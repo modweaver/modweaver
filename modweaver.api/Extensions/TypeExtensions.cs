@@ -1,11 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using modweaver.api.Utilities;
-
-namespace modweaver.api.Extensions {
-    public static class TypeUtilities
-    {
+﻿namespace modweaver.api.Extensions {
+    public static class TypeUtilities {
         // public static Type[] GetInterfaceImplementations(this Type interfaceType, Assembly? assembly = null)
         // {
         //     return (assembly == null

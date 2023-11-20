@@ -29,6 +29,6 @@ namespace modweaver {
         public ModManifest Manifest { get; internal set; }
         public ModManifest.Metadata Metadata => Manifest.metadata;
         public Logger Logger { get; internal set; }
-        //TODO: config system would be here too
+        public ModConfig Config { get; set; }
     }
 }

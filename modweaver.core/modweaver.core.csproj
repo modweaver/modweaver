@@ -154,9 +154,11 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="BuiltInMods.cs" />
         <Compile Include="ConsoleCreator.cs" />
         <Compile Include="CoreMain.cs" />
         <Compile Include="Mod.cs" />
+        <Compile Include="ModConfig.cs" />
         <Compile Include="ModMainClassAttribute.cs" />
         <Compile Include="ModManifest.cs" />
         <Compile Include="Patches.cs" />

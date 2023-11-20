@@ -97,6 +97,7 @@ namespace modweaver.core {
                 instance.Manifest = manifest;
                 instance.Assembly = assembly;
                 instance.Logger = LogManager.GetLogger(manifest.metadata.id);
+                instance.Config = new ModConfig(manifest.metadata.id);
                 
                 instance.Init();
                 mods.Add(instance);

@@ -124,9 +124,10 @@ namespace modweaver.core {
         public static void handoff() {
             ConsoleCreator.Create();
             LogManager.Setup().LoadConfiguration(b => {
-                b.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToConsole();
+                b.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToColoredConsole();
                 b.ForLogger().FilterMinLevel(LogLevel.Trace)
                     .WriteToFile(Path.Combine(Paths.modweaverDir, "latest.log"));
+                
             });
             Logger.Info("Recieved handoff");
             Logger.Debug("Patching...");

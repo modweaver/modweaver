@@ -3,8 +3,10 @@ using System.IO;
 using HarmonyLib;
 using modweaver.core;
 
+
 namespace modweaver.testmod {
     [ModMainClass]
+    // ReSharper disable once UnusedType.Global (because it is used!!)
     public class ModMain : Mod {
         public override void Init() {
             Logger.Info("Test mod init method is called.");

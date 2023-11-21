@@ -1,44 +1,54 @@
+using System;
 using System.IO;
-using modweaver.core;
-using Newtonsoft.Json.Linq;
+using Tomlyn;
+using Tomlyn.Model;
 
 namespace modweaver.core {
+    [Obsolete(
+        "EXPERIMENTAL: This API is subject to change. The Experimental attribute is not available on .NET Framework 4.7.2, so we use Obsolete.")]
     public class ModConfig {
         private readonly string modId;
         private readonly string configDir;
-        
-        internal ModConfig(string id) {
+
+        public ModConfig(string id) {
             modId = id;
             configDir = Path.Combine(Paths.modweaverDir, "config", modId);
             if (!Directory.Exists(configDir)) Directory.CreateDirectory(configDir);
         }
 
+        public string ModId => modId;
+        public string ConfigDir => configDir;
+
         public T get<T>(string key, T def = default, string fileName = "main") {
-            var filePath = Path.Combine(configDir, fileName + ".json");
-            
-            if (!File.Exists(filePath)) {
-                var obj = new JObject {
-                    [key] = JToken.FromObject(def)
-                };
-                File.WriteAllText(filePath, obj.ToString());
-                return def;
-            }
-            else {
-                var obj = JObject.Parse(File.ReadAllText(filePath));
-                var val = obj[key];
-                if (val == null) {
-                    return def;
+            var filePath = Path.Combine(configDir, $"{fileName}.toml");
+
+            if (File.Exists(filePath)) {
+                T val;
+                try {
+                    var table = Toml.ToModel(File.ReadAllText(filePath));
+                    var valTry = table[key];
+                    val = (T)valTry;
                 }
-                return val.Value<T>() ?? def;
+                catch (Exception e) {
+                    val = def;
+                }
+
+                return val;
             }
+
+
+            var newTable = new TomlTable {
+                [key] = def
+            };
+            File.WriteAllText(filePath, Toml.FromModel(newTable));
+            return def;
         }
 
         public void set<T>(string key, T value, string fileName = "main") {
-            var filePath = Path.Combine(configDir, fileName + ".json");
-            JObject obj;
-            obj = File.Exists(filePath) ? JObject.Parse(File.ReadAllText(filePath)) : new JObject();
-            obj[key] = JToken.FromObject(value);
-            File.WriteAllText(filePath, obj.ToString());
+            var filePath = Path.Combine(configDir, $"{fileName}.toml");
+            var table = File.Exists(filePath) ? Toml.ToModel(File.ReadAllText(filePath)) : new TomlTable();
+            table[key] = value;
+            File.WriteAllText(filePath, Toml.FromModel(table));
         }
     }
 }

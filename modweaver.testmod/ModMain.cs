@@ -9,6 +9,13 @@ namespace modweaver.testmod {
     // ReSharper disable once UnusedType.Global (because it is used!!)
     public class ModMain : Mod {
         public override void Init() {
+            //test logger
+            Logger.Trace("Trace!");
+            Logger.Debug("Debug!");
+            Logger.Info("Info!");
+            Logger.Warn("Warn!");
+            Logger.Error("Error!");
+            
             Logger.Info("Test mod init method is called.");
             Harmony harmony = new Harmony(Metadata.id); 
             Logger.Info("Running patches!");

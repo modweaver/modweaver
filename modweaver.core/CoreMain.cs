@@ -96,8 +96,8 @@ namespace modweaver.core {
                 var mainClassType = types[0];
 
                 if (types.Length > 1) {
-                    Logger.Warn("Mod {} contains multiple main classes! Loading only the first class ({}).",
-                        manifest.metadata.title, mainClassType.FullName);
+                    Logger.Warn("Mod {} contains multiple main classes! Not loading this mod.",
+                        manifest.metadata.title);
                     continue;
                 }
                 

@@ -49,6 +49,9 @@
         </ProjectReference>
     </ItemGroup>
     <ItemGroup>
+        <Reference Include="0Harmony, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
+        </Reference>
         <Reference Include="Accessibility">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Accessibility.dll</HintPath>
         </Reference>
@@ -85,8 +88,26 @@
         <Reference Include="JunTween">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\JunTween.dll</HintPath>
         </Reference>
+        <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Mdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Pdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+          <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+        </Reference>
         <Reference Include="Mono.Security">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Mono.Security.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.RuntimeDetour, Version=22.3.23.4, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\MonoMod.RuntimeDetour.22.3.23.4\lib\net452\MonoMod.RuntimeDetour.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.Utils, Version=22.3.23.4, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\MonoMod.Utils.22.3.23.4\lib\net452\MonoMod.Utils.dll</HintPath>
         </Reference>
         <Reference Include="MyScriptAssembly">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\MyScriptAssembly.dll</HintPath>
@@ -106,6 +127,7 @@
         <Reference Include="Steamworks.NET">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Steamworks.NET.dll</HintPath>
         </Reference>
+        <Reference Include="System" />
         <Reference Include="Unity.2D.Animation.Runtime">
             <HintPath>..\packages\SpiderHeck.GameLibs.1.25.0-r.4\lib\Unity.2D.Animation.Runtime.dll</HintPath>
         </Reference>

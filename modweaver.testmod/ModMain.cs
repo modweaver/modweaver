@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using HarmonyLib;
 using modweaver.core;
 
 namespace modweaver.testmod {
@@ -7,6 +8,10 @@ namespace modweaver.testmod {
     public class ModMain : Mod {
         public override void Init() {
             Logger.Info("Test mod init method is called.");
+            Harmony harmony = new Harmony(Metadata.id); 
+            Logger.Info("Running patches!");
+            harmony.PatchAll();
+            Logger.Info("Patched!");
         }
 
         public override void Ready() {
@@ -23,6 +28,15 @@ namespace modweaver.testmod {
 
         public override void OnGUI(ModsMenuPopup ui) {
             ui.CreateTitle("I'm a cool mod :3");
+        }
+    }
+
+    [HarmonyPatch(typeof(VersionNumberTextMesh), "Start")]
+    public static class VNTMPatch {
+        
+        [HarmonyPostfix]
+        public static void Postfix(ref VersionNumberTextMesh __instance) {
+            __instance.textMesh.text += "\nhello world :3";
         }
     }
 }

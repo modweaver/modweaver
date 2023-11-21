@@ -23,6 +23,7 @@ namespace modweaver.core {
         private static void discoverMods() {
             discoveredMods.Clear();
             var modsPath = Path.Combine(Paths.modweaverDir, "mods");
+            if (!Directory.Exists(modsPath)) Directory.CreateDirectory(modsPath);
             foreach (var dllPath in Directory.EnumerateFiles(modsPath, "*.dll", SearchOption.AllDirectories)) {
                 var dllName = Path.GetFileName(dllPath);
                 var asm = Assembly.ReflectionOnlyLoadFrom(dllPath);

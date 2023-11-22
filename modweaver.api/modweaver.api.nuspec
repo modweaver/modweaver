@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>modweaver.api</id>
+        <version>1.0.1</version>
+        <title>ModWeaver API</title>
+        <authors>ModWeaver Team</authors>
+        <owners>ModWeaver Team</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>API and modding interface definitions for ModWeaver.</description>
+        <dependencies>
+            <dependency id="modweaver.core" version="1.0.1" />
+            <dependency id="spiderheck.gamelibs" version="1.4.0" />
+        </dependencies>
+    </metadata>
+</package>

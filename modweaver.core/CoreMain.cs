@@ -10,7 +10,7 @@ using Tomlyn;
 
 namespace modweaver.core {
     public class CoreMain {
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        internal static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         
         internal static List<Mod> mods = new();
         

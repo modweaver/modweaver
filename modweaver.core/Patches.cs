@@ -3,6 +3,8 @@ using System.Text;
 using HarmonyLib;
 using HarmonyLib.Tools;
 using modweaver.core;
+using NLog;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace modweaver.preload {
@@ -61,6 +63,38 @@ namespace modweaver.preload {
         public static void Postfix() {
             HudController.instance.EnableModsButton(); // we do this here to ensure everything has loaded
             CoreMain.addModsToMenu();
+        }
+    }
+    
+    [HarmonyPatch(typeof(SteamLeaderboards), "UpdateScore")]
+    internal class DisableLeaderboard
+    {
+        public static bool Prefix(int score)
+        {
+            CoreMain.Logger.Debug("Skipping leaderboard save of {}", score);
+            return false;
+        }
+    }
+    
+    [HarmonyPatch("HudController", "ShowQuickGamePrompt")]
+    internal class StopQuickGame
+    {
+        private static bool done = false;
+        
+        public static bool Prefix(ref object __instance)
+        {
+            CoreMain.Logger.Debug("Attempted to show QuickPlay prompt. BLOCKED!");
+            if(!done) RuntimeApis.Announce("QuickPlay has been disabled in modded play", 255, 255, 255, __instance.GetType());
+            done = !done;
+            return false;
+        }
+    }
+    
+    public class RuntimeApis
+    {
+        public static void Announce(string text, int colorR, int colorG, int colorB, Type gameTypeRef) {
+            var color = new Color(colorR, colorG, colorB);
+            Announcer.instance.Announce(text, color, true);
         }
     }
 }

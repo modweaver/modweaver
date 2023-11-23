@@ -1,22 +1,24 @@
-#!/usr/bin/env bash
-
+clear
+echo -e -n "\033[1\033[4mMAKE SURE TO HAVE OPENED THE SOLOTUION BEFORE BUILDING TO ACQUIRE THE NUGET PACKAGES\033[0m \n"
 GAME_DIRECTORY=""
 MODWEAVER_COPY_TARGET=""
 SHOULD_CONTINUE=""
 if [[ -z "$1" ]];
 then
 	echo "No Arguments Provided!"
-	echo "wininstall <GAME_DIRECTORY>"
+	echo "install <GAME_DIRECTORY>"
 fi
 if [[ "$1" ]];
 then
 
 	# proceed with installation
 	GAME_DIRECTORY=$1
-	MODWEAVER_CORE_TARGET="$GAME_DIRECTORY/modweaver"
-	MODWEAVER_LIBS_TARGET="$MODWEAVER_CORE_TARGET/libs"
+	MODWEAVER_CORE_TARGET="$GAME_DIRECTORY\modweaver"
+	MODWEAVER_CORE_PRINTABLE="${MODWEAVER_CORE_TARGET//\\//}"
+	MODWEAVER_LIBS_TARGET="$MODWEAVER_CORE_TARGET\libs"
+	MODWEAVER_LIBS_PRINTABLE="${MODWEAVER_LIBS_TARGET//\\//}"
 	echo "Cleaning libs directory!" # Clean up previous build
-	echo -e -n "\033[1\033[4m$MODWEAVER_CORE_TARGET\033[0m | IS THIS THE CORRECT DIRECTORY?\033[0m <y/n>: "
+	echo -e -n "\033[1\033[4m""$MODWEAVER_CORE_PRINTABLE""\033[0m | IS THIS THE CORRECT DIRECTORY?\033[0m <y/n>: "
 	read con
 	if [[ "$con" == "Y" || "$con" == "y" ]];
 	then
@@ -35,11 +37,12 @@ then
 		# so they don't remove system 32 :9
 		echo "Please input the correct directories <GAME_DIRECTORY>"
 	fi
-	if [[ "$SHOULD_CONTINUE" == "YES" ]];
+	if [[ "$SHOULD_CONTINUE" == "YES" ]]
 	then
 		# we now build the solution
 		# don't waste time building if they put in wrong dir
-		dotnet cake --nologo -v q --property WarningLevel=0 --target Build --clean ## -v q(verbose quest)
+		echo "Building"
+		dotnet cake --nologo -v q --property WarningLevel=0 --target Build --clean
 		echo "Copying files"
 		cp "./bin/0Harmony.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/modweaver.api.dll" "$MODWEAVER_LIBS_TARGET"

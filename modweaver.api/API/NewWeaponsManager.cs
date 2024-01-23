@@ -10,7 +10,7 @@ using UnityEngine;
 namespace modweaver.api.API {
     public static class NewWeaponsManager {
         private static uint _prefabHandlerId = 7777; //TODO: fix possible collision
-        private static List<Weapon> _newWeapons = new();
+        public static List<Weapon> NewWeapons = new();
         private static List<CustomWeapon> _newUserWeapons = new();
         private static bool _weaponsAdded = false;
 
@@ -78,7 +78,7 @@ namespace modweaver.api.API {
             [HarmonyPostfix]
             public static void Postfix(ref VersusMode __instance) {
                 AddWeapons();
-                __instance.weapons.AddRange(_newWeapons.Select(x => new SpawnableWeapon(x, 3)));
+                __instance.weapons.AddRange(NewWeapons.Select(x => new SpawnableWeapon(x, 3)));
             }
         }
 
@@ -100,32 +100,33 @@ namespace modweaver.api.API {
 
             ElementLists list = tmp[0];
             SerializationWeaponName maxName = (SerializationWeaponName)Enum.GetValues(typeof(SerializationWeaponName)).Cast<int>().Max();
-            _newWeapons.AddRange(list.allWeapons);
+            NewWeapons.AddRange(list.allWeapons);
             List<Weapon> tmpList = new List<Weapon>();
 
             foreach (var weapon in _newUserWeapons) {
-                Weapon newWeapon = _newWeapons[(int)weapon.Type];
+                Weapon newWeapon = NewWeapons[(int)weapon.Type];
                 GameObject copiedWeapon = UnityEngine.Object.Instantiate(newWeapon.gameObject);
                 GameObject.DontDestroyOnLoad(copiedWeapon.gameObject);
                 copiedWeapon.SetActive(false);
                 weapon.WeaponObject = copiedWeapon;
 
                 newWeapon = copiedWeapon.GetComponent<Weapon>();
-                newWeapon.serializationWeaponName = maxName + 1;
+                newWeapon.serializationWeaponName = ++maxName;
                 newWeapon.name = weapon.Name;
                 newWeapon.usedInCustomTiers = true;
 
-                OnInitCompleted?.Invoke();
-
-                var no = newWeapon.GetComponent<NetworkObject>();
+            }
+            OnInitCompleted?.Invoke();
+            foreach (var weapon in _newUserWeapons) {
+                var no = weapon.WeaponObject.GetComponent<NetworkObject>();
                 var handler = new WeaponNetworkPrefabInstanceHandler(_prefabHandlerId++, no);
                 NetworkManager.Singleton.PrefabHandler.AddHandler(handler.Id, handler);
 
-                newWeapon.transform.TransformPoint(9999 + tmpList.Count * 1000, 9999, 9999);
-                tmpList.Add(newWeapon);
+                weapon.WeaponObject.transform.TransformPoint(9999 + tmpList.Count * 1000, 9999, 9999);
+                tmpList.Add(weapon.WeaponObject.GetComponent<Weapon>());
             }
-            _newWeapons = tmpList;
-            list.allWeapons.AddRange(_newWeapons);
+            NewWeapons = tmpList;
+            list.allWeapons.AddRange(NewWeapons);
             _weaponsAdded = true;
         }
 
@@ -134,13 +135,13 @@ namespace modweaver.api.API {
 
             [HarmonyPrefix]
             public static void Prefix(ref WeaponSpawner __instance) {
-                foreach (var w in _newWeapons) {
+                foreach (var w in NewWeapons) {
                     w.gameObject.SetActive(true);
                 }
             }
             [HarmonyPostfix]
             public static void Postfix(ref WeaponSpawner __instance) {
-                foreach (var w in _newWeapons) {
+                foreach (var w in NewWeapons) {
                     w.gameObject.SetActive(false);
                 }
             }

@@ -8,7 +8,7 @@ namespace modweaver.core {
                 version = Utils.version,
                 title = "ModWeaver",
                 authors = new List<string> { "ModWeaver Team", "reddust9", "Ecorous", "viadot" },
-                gameVersion = "1.4"
+                gameVersion = "1.6"
             },
             dependencies = new List<ModManifest.Dependency>(),
             incompatibilities = new List<string>()
@@ -17,10 +17,10 @@ namespace modweaver.core {
         public static ModManifest spiderheck = new() {
             metadata = new ModManifest.Metadata {
                 id = "com.spiderheck",
-                version = "1.4",
+                version = "1.6",
                 title = "SpiderHeck",
                 authors = new List<string> { "Neverjam", "Jazeps", "Pushka Studios" },
-                gameVersion = "1.4"
+                gameVersion = "1.6"
             },
             dependencies = new List<ModManifest.Dependency>(),
             incompatibilities = new List<string>()

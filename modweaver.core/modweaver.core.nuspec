@@ -2,14 +2,14 @@
 <package>
     <metadata>
         <id>modweaver.core</id>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
         <title>ModWeaver Core</title>
         <authors>ModWeaver Team</authors>
         <owners>ModWeaver Team</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>ModWeaver Core.</description>
         <dependencies>
-            <dependency id="spiderheck.gamelibs" version="1.4.0" />
+            <dependency id="spiderheck.gamelibs" version="99.1.5.0" />
         </dependencies>
     </metadata>
 </package>

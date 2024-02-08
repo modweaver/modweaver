@@ -49,9 +49,9 @@ namespace modweaver.preload {
                 textMeshInfo.SetValue(__instance, textMesh);
 
                 hasDoneTextPatch = true;*/
-                Console.WriteLine("[modweaver] trying to patch versionnumbertextmesh");
+                CoreMain.Logger.Debug("Patching VersionNumberTextMesh");
                 //__instance.textMesh.text = "SPIDERHECK; ModWeaver ALPHA 0.1.0";
-                __instance.textMesh.SetText("SPIDERHECK; ModWeaver ALPHA 0.1.0");
+                __instance.textMesh.SetText($"SPIDERHECK {BuiltInMods.spiderheck.metadata.version}; ModWeaver {Utils.version}");
                 hasDoneTextPatch = true;
             }
         }

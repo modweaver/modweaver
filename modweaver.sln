@@ -4,15 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.core", "modweaver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.preload", "modweaver.preload\modweaver.preload.csproj", "{3F22B6F9-9458-44BE-84DC-41B78CBE0806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.api", "modweaver.api\modweaver.api.csproj", "{C0937567-94F2-4679-894E-2B6B15F839EA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2A5A13DE-5224-4873-9E9B-D2413A464810}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
 		install.sh = install.sh
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modweaver.testmod", "modweaver.testmod\modweaver.testmod.csproj", "{3F22B6F9-9458-44BE-84DC-41B78CBE0806}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,13 +20,5 @@ Global
 		{A9311596-AE2A-47F8-8E3C-3527579D30FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9311596-AE2A-47F8-8E3C-3527579D30FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9311596-AE2A-47F8-8E3C-3527579D30FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F22B6F9-9458-44BE-84DC-41B78CBE0806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F22B6F9-9458-44BE-84DC-41B78CBE0806}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F22B6F9-9458-44BE-84DC-41B78CBE0806}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F22B6F9-9458-44BE-84DC-41B78CBE0806}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0937567-94F2-4679-894E-2B6B15F839EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0937567-94F2-4679-894E-2B6B15F839EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0937567-94F2-4679-894E-2B6B15F839EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0937567-94F2-4679-894E-2B6B15F839EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

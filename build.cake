@@ -6,11 +6,10 @@ var configuration = Argument("configuration", "Release");
 
 var coreBuildDir = $"modweaver.core/bin/{configuration}";
 var preloadBuildDir = $"modweaver.preload/bin/{configuration}";
-var apiBuildDir = $"modweaver.api/bin/{configuration}";
 
 var binDir = "./bin";
-var buildDirs = new[] {coreBuildDir, preloadBuildDir, apiBuildDir};
-var csProjs = new[] {"modweaver.core/modweaver.core.csproj", "modweaver.preload/modweaver.preload.csproj", "modweaver.api/modweaver.api.csproj"};
+var buildDirs = new[] {coreBuildDir, preloadBuildDir};
+var csProjs = new[] {"modweaver.core/modweaver.core.csproj", "modweaver.preload/modweaver.preload.csproj"};
 
 //////////////////////////////////////////////////////////////////////
 // TASKS

@@ -27,9 +27,13 @@ namespace modweaver.core {
                 try {
                     var table = Toml.ToModel(File.ReadAllText(filePath));
                     var valTry = table[key];
+                    if(typeof(T) == typeof(int) && valTry is long valLong) {
+                        valTry = Convert.ToInt32(valLong);
+                    }
                     val = (T)valTry;
                 }
                 catch (Exception e) {
+                    CoreMain.Logger.Warn("Fetching config value {mod}.{file}.{key} failed: {e}", modId, fileName, key, e);
                     val = def;
                 }
 

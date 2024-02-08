@@ -45,7 +45,6 @@ then
 		dotnet cake --nologo -v q --property WarningLevel=0 --target Build --clean
 		echo "Copying files"
 		cp "./bin/0Harmony.dll" "$MODWEAVER_LIBS_TARGET"
-		cp "./bin/modweaver.api.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/modweaver.core.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/modweaver.preload.dll" "$MODWEAVER_LIBS_TARGET"
 		cp "./bin/Mono.Cecil.dll" "$MODWEAVER_LIBS_TARGET"

@@ -11,9 +11,7 @@ namespace modweaver.core {
             return (TMod)mod;
         }
 
-        protected Mod() {
-            
-        }
+        protected Mod() { }
 
         // Gets called when the mod is first created
         // Not all mods may be ready at this time (libraries may not be fully ready etc)
@@ -21,10 +19,10 @@ namespace modweaver.core {
 
         // Gets called after all mods have been loaded and Init()'d
         public abstract void Ready();
-        
+
         // Gets called whenever the mod's menu page is opened
         public abstract void OnGUI(ModsMenuPopup ui);
-        
+
         public Assembly Assembly { get; internal set; }
         public ModManifest Manifest { get; internal set; }
         public ModManifest.Metadata Metadata => Manifest.metadata;

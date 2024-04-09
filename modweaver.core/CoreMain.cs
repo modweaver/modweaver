@@ -22,7 +22,7 @@ namespace modweaver.core {
 
         private static void discoverMods() {
             discoveredMods.Clear();
-            var modsPath = Path.Combine(Paths.modweaverDir, "mods");
+            var modsPath = Path.Combine(Paths.modweaverDir, ConfigHandler.getConfig().relativeModsDir);
             if (!Directory.Exists(modsPath)) Directory.CreateDirectory(modsPath);
             foreach (var dllPath in Directory.EnumerateFiles(modsPath, "*.dll", SearchOption.AllDirectories)) {
                 var dllName = Path.GetFileName(dllPath);
@@ -67,13 +67,29 @@ namespace modweaver.core {
                     Logger.Warn("Mod {} is missing one or more of its metadata fields! Skipping load", dllName);
                 }
                 
+                
                 Logger.Info("Mod {} version {} has been found", 
                     manifest.metadata.title, manifest.metadata.version);
                 
                 discoveredMods.Add(dllPath, manifest);
             }
             
-            //TODO: verify dependencies and incompatibilities
+            //TODO: verify dependencies
+            foreach (var kv in discoveredMods) {
+                var path = kv.Key;
+                var manifest = kv.Value;
+                var incompats = manifest.incompatibilities;
+                foreach (var incompat in incompats) {
+                    if (discoveredMods.Values.Any(m => m.metadata.id == incompat)) {
+                        Logger.Warn("Mod {} is incompatible with mod {}! Not loading either mod.",
+                            manifest.metadata.title, incompat);
+                        discoveredMods.Remove(path);
+                        var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
+                        discoveredMods.Remove(wawa.Key);
+                        break;
+                    }
+                }
+            }
         }
 
         private static void loadMods() {
@@ -96,9 +112,17 @@ namespace modweaver.core {
                 var mainClassType = types[0];
 
                 if (types.Length > 1) {
-                    Logger.Warn("Mod {} contains multiple main classes! Not loading this mod.",
-                        manifest.metadata.title);
-                    continue;
+                    if (ConfigHandler.getConfig().playRulette) {
+                        Logger.Warn("Mod {} contains multiple main classes! Time to play rulette!",
+                            manifest.metadata.title);
+                        var rand = new Random();
+                        mainClassType = types[rand.Next(0, types.Length)];
+                    }
+                    else {
+                        Logger.Warn("Mod {} contains multiple main classes! Not loading this mod.",
+                            manifest.metadata.title);
+                        continue;
+                    }
                 }
                 
                 Logger.Debug("Creating instance of main class {} for mod {}",
@@ -130,6 +154,8 @@ namespace modweaver.core {
                 
             });
             Logger.Info("Recieved handoff");
+            Logger.Debug("Loading config...");
+            ConfigHandler.setupConfig();
             Logger.Debug("Patching...");
             Patches.Patch();
             
@@ -166,6 +192,7 @@ namespace modweaver.core {
             foreach (var mod in mods) {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
                     var ui = Announcer.ModsPopup(mod.Metadata.title);
+                    ui.CreateDivider();
                     ui.CreateParagraph($"ID: {mod.Metadata.id}");
                     ui.CreateParagraph($"Version: {mod.Metadata.version}");
                     ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");

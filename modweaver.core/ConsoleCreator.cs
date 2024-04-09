@@ -11,6 +11,7 @@ namespace modweaver.core {
         private static StreamWriter writer;
         
         public static void Create() {
+            if (!ConfigHandler.getConfig().showConsole) return;
             if(initialised) return;
             initialised = true;
 

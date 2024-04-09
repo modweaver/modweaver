@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 
 namespace modweaver.preload {
     public static class Patches {
+        static Harmony harmony = new Harmony("org.modweaver.loader");
         public static void Patch() {
-            Harmony harmony = new Harmony("org.modweaver.loader");
             harmony.PatchAll();
         }
     }
@@ -51,7 +51,9 @@ namespace modweaver.preload {
                 hasDoneTextPatch = true;*/
                 CoreMain.Logger.Debug("Patching VersionNumberTextMesh");
                 //__instance.textMesh.text = "SPIDERHECK; ModWeaver ALPHA 0.1.0";
-                __instance.textMesh.SetText($"SPIDERHECK {BuiltInMods.spiderheck.metadata.version}; ModWeaver {Utils.version}");
+                var newText = __instance.textMesh.text;
+                newText += "\n\nModweaver loaded\nMade with love by the modweaver team <3333";
+                __instance.textMesh.SetText(newText);
                 hasDoneTextPatch = true;
             }
         }

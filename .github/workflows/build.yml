@@ -15,7 +15,7 @@ jobs:
           cp -r ~/.nuget/packages packages
           ls packages
           echo "SPIDERHECK GAMELIBS/lib"
-          ls packages/spiderheck.gamelibs/lib
+          ls packages/spiderheck.gamelibs
       - name: Build Project
         uses: cake-build/cake-action@v2.0.0
         with:

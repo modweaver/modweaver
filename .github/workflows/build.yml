@@ -13,6 +13,7 @@ jobs:
       - name: Copy NuGet packages because nuget is stoopid
         run: |
           cp -r ~/.nuget/packages packages
+          ls packages
       - name: Build Project
         uses: cake-build/cake-action@v2.0.0
         with:

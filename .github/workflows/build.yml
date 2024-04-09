@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Restore Packages
+        run: dotnet restore
       - name: Build Project
         uses: cake-build/cake-action@v2.0.0
         with:

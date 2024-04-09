@@ -90,16 +90,16 @@
             <HintPath>..\packages\spiderheck.gamelibs\99.1.6\lib\JunTween.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Mdb">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Pdb">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Rocks">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Security">
             <HintPath>..\packages\spiderheck.gamelibs\99.1.6\lib\Mono.Security.dll</HintPath>
@@ -117,7 +117,7 @@
             <HintPath>..\packages\spiderheck.gamelibs\99.1.6\lib\NewAssembly.dll</HintPath>
         </Reference>
         <Reference Include="Newtonsoft.Json">
-            <HintPath>..\packages\newtonsoft.json\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <HintPath>..\packages\newtonsoft.json\13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
         <Reference Include="NLog">
             <HintPath>..\packages\nlog\5.2.6\lib\net46\NLog.dll</HintPath>
@@ -219,16 +219,16 @@
             <HintPath>..\packages\SpiderHeck.GameLibs.99.1.5\lib\JunTween.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Mdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Pdb, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
-            <HintPath>..\packages\mono.cecil\22.3.23.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+            <HintPath>..\packages\mono.cecil\0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
         </Reference>
         <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
             <HintPath>..\packages\SpiderHeck.GameLibs.99.1.5\lib\Mono.Security.dll</HintPath>
@@ -246,7 +246,7 @@
             <HintPath>..\packages\SpiderHeck.GameLibs.99.1.5\lib\NewAssembly.dll</HintPath>
         </Reference>
         <Reference Include="Newtonsoft.Json">
-            <HintPath>..\packages\newtonsoft.json\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <HintPath>..\packages\newtonsoft.json\13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
         <Reference Include="NLog">
             <HintPath>..\packages\nlog\5.2.6\lib\net46\NLog.dll</HintPath>

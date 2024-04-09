@@ -16,6 +16,9 @@ namespace modweaver.core {
         internal static void setupConfig() {
             var configFile = Path.Combine(Paths.modweaverDir, "config", "modweaver.toml");
             if (!File.Exists(configFile)) {
+                if (!Directory.Exists(Path.Combine(Paths.modweaverDir, "config"))) {
+                    Directory.CreateDirectory(Path.Combine(Paths.modweaverDir, "config"));
+                }
                 config = new ModweaverConfig();
                 File.WriteAllText(configFile, Toml.FromModel(config));
             } else {

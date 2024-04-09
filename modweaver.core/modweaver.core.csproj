@@ -50,7 +50,136 @@
         <PackageReference Include="NLog" Version="5.2.6"/>
         <!-- Tomlyn 0.16.2 -->
         <PackageReference Include="Tomlyn" Version="0.16.2"/>
-        <Reference Include="0Harmony, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+        <Reference Include="0Harmony">
+            <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Accessibility">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Accessibility.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="Cinemachine">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Cinemachine.dll</HintPath>
+        </Reference>
+        <Reference Include="DDebug">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\DDebug.dll</HintPath>
+        </Reference>
+        <Reference Include="DoozyEngine">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\DoozyEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="DOTween">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\DOTween.dll</HintPath>
+        </Reference>
+        <Reference Include="DOTween.Modules">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\DOTween.Modules.dll</HintPath>
+        </Reference>
+        <Reference Include="EasySave3">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\EasySave3.dll</HintPath>
+        </Reference>
+        <Reference Include="GdkUtilities">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\GdkUtilities.dll</HintPath>
+        </Reference>
+        <Reference Include="I2">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\I2.dll</HintPath>
+        </Reference>
+        <Reference Include="JunTween">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\JunTween.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil">
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Mdb">
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Pdb">
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Cecil.Rocks">
+            <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+        </Reference>
+        <Reference Include="Mono.Security">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Mono.Security.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.RuntimeDetour">
+            <HintPath>..\packages\MonoMod.RuntimeDetour.22.3.23.4\lib\net452\MonoMod.RuntimeDetour.dll</HintPath>
+        </Reference>
+        <Reference Include="MonoMod.Utils">
+            <HintPath>..\packages\MonoMod.Utils.22.3.23.4\lib\net452\MonoMod.Utils.dll</HintPath>
+        </Reference>
+        <Reference Include="MyScriptAssembly">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\MyScriptAssembly.dll</HintPath>
+        </Reference>
+        <Reference Include="NewAssembly">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\NewAssembly.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="NLog">
+            <HintPath>..\packages\NLog.5.2.6\lib\net46\NLog.dll</HintPath>
+        </Reference>
+        <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+        </Reference>
+        <Reference Include="SteamP2P Transport for Netcode for GameObjects">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\SteamP2P Transport for Netcode for GameObjects.dll</HintPath>
+        </Reference>
+        <Reference Include="Steamworks.NET">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Steamworks.NET.dll</HintPath>
+        </Reference>
+        <Reference Include="System">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\System.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Core">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\System.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Data">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\System.Data.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\System.Xml.dll</HintPath>
+        </Reference>
+        <Reference Include="Tomlyn">
+            <HintPath>..\packages\Tomlyn.0.16.2\lib\netstandard2.0\Tomlyn.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.2D.Animation.Runtime">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.2D.Animation.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.2D.Common.Runtime">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.2D.Common.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Collections">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.Collections.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.InputSystem">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.InputSystem.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Mathematics">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.Mathematics.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Netcode.Components">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.Netcode.Components.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Netcode.Runtime">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.Netcode.Runtime.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.TextMeshPro.dll</HintPath>
+        </Reference>
+        <Reference Include="Unity.Timeline">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\Unity.Timeline.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath>..\packages\SpiderHeck.GameLibs.99.1.6\lib\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <!--<Reference Include="0Harmony, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
             <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
         </Reference>
         <Reference Include="Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -170,7 +299,7 @@
         </Reference>
         <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
             <HintPath>..\packages\SpiderHeck.GameLibs.99.1.5\lib\UnityEngine.UI.dll</HintPath>
-        </Reference>
+        </Reference>-->
     </ItemGroup>
     <ItemGroup>
         <Compile Include="*.cs"/>

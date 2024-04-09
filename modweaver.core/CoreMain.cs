@@ -151,19 +151,24 @@ namespace modweaver.core {
                 b.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToColoredConsole();
                 b.ForLogger().FilterMinLevel(LogLevel.Trace)
                     .WriteToFile(Path.Combine(Paths.modweaverDir, "latest.log"));
-                
+
             });
-            Logger.Info("Recieved handoff");
-            Logger.Debug("Loading config...");
-            ConfigHandler.setupConfig();
-            Logger.Debug("Patching...");
-            Patches.Patch();
-            
-            Logger.Debug("Discovering mods...");
-            discoverMods();
-            Logger.Debug("Loading mods...");
-            loadMods();
-            Logger.Info("All ({ModCount}) mods have been loaded!", mods.Count);
+            try {
+                Logger.Info("Recieved handoff");
+                Logger.Debug("Loading config...");
+                ConfigHandler.setupConfig();
+                Logger.Debug("Patching...");
+                Patches.Patch();
+
+                Logger.Debug("Discovering mods...");
+                discoverMods();
+                Logger.Debug("Loading mods...");
+                loadMods();
+                Logger.Info("All ({ModCount}) mods have been loaded!", mods.Count);
+            }
+            catch (Exception e) {
+                Logger.Error(e, "An error occured while loading ModWeaver. Please check the logs for more information.");
+            }
         }
         
         // do mod load before this!

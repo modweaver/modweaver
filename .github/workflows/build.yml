@@ -32,6 +32,7 @@ jobs:
           mkdir .temp-files/modweaver
           mkdir .temp-files/modweaver/libs
           mkdir .temp-files/modweaver/mods
+          tree .temp-files
           echo "Begin copying files to artifact dir"
           cp ./bin/0Harmony.dll .temp-files/modweaver/libs
           cp ./bin/modweaver.core.dll .temp-files/modweaver/libs

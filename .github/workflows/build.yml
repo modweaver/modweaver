@@ -6,13 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Restore Packages
-        run: |
-          cd modweaver.core
-          dotnet restore
-          cd ../modweaver.preload
-          dotnet restore
-      - name: Cleanup
-        run: rm -rf */obj
+        run: dotnet restore
       - name: Build Project
         uses: cake-build/cake-action@v2.0.0
         with:

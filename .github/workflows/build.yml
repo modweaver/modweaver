@@ -41,6 +41,7 @@ jobs:
           cp ./bin/Mono.Cecil.Mdb.dll .temp-files/modweaver/libs
           cp ./bin/Mono.Cecil.Pdb.dll .temp-files/modweaver/libs
           cp ./bin/Mono.Cecil.Rocks.dll .temp-files/modweaver/libs
+          cp ./bin/MonoMod.RuntimeDetour.dll .temp-files/modweaver/libs
           cp ./bin/MonoMod.Utils.dll .temp-files/modweaver/libs
           cp ./bin/Newtonsoft.Json.dll .temp-files/modweaver/libs
           cp ./bin/NLog.dll .temp-files/modweaver/libs

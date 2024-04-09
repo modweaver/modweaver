@@ -1,0 +1,40 @@
+on:
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Project
+        uses: cake-build/cake-action@v2.0.0
+        with:
+          target: Build
+          arguments: |
+            clean
+            nologo
+            
+      - name: Copy Files
+        run: |
+          mkdir .temp-files
+          mkdir .temp-files/modweaver
+          mkdir .temp-files/modweaver/libs
+          mkdir .temp-files/modweaver/mods
+          echo "Begin copying files to artifact dir"
+          cp ./bin/0Harmony.dll .temp-files/modweaver/libs
+          cp ./bin/modweaver.core.dll .temp-files/modweaver/libs
+          cp ./bin/modweaver.preload.dll .temp-files/modweaver/libs
+          cp ./bin/Mono.Cecil.dll .temp-files/modweaver/libs
+          cp ./bin/Mono.Cecil.Mdb.dll .temp-files/modweaver/libs
+          cp ./bin/Mono.Cecil.Pdb.dll .temp-files/mdoweaver/libs
+          cp ./bin/Mono.Cecil.Rocks.dll .temp-files/modweaver/libs
+          cp ./bin/MonoMod.Utils.dll .temp-files/modweaver/libs
+          cp ./bin/Newtonsoft.Json.dll .temp-files/modweaver/libs
+          cp ./bin/NLog.dll .temp-files/modweaver/libs
+          cp ./bin/Tomlyn.dll .temp-files/modweaver/libs
+          cp ./doorstop/* .temp-files/
+          echo "Done"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Modweaver ZIP
+          path: .temp-files

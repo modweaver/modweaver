@@ -46,7 +46,7 @@
         <!-- MonoMod.Utils 22.3.23.4 -->
         <PackageReference Include="MonoMod.Utils" Version="22.3.23.4"/>
         <!-- newtonsoft.json\13.0.3\ 13.0.3 -->
-        <PackageReference Include="newtonsoft.json\13.0.3\" Version="13.0.3"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <!-- NLog 5.2.6 -->
         <PackageReference Include="NLog" Version="5.2.6"/>
         <!-- Tomlyn 0.16.2 -->

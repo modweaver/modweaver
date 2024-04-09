@@ -26,6 +26,8 @@ jobs:
             
       - name: Copy Files
         run: |
+          pwd
+          ls bin
           mkdir .temp-files
           mkdir .temp-files/modweaver
           mkdir .temp-files/modweaver/libs

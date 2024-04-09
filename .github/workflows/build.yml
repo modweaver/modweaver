@@ -11,6 +11,8 @@ jobs:
           dotnet restore
           cd ../modweaver.preload
           dotnet restore
+      - name: Cleanup
+        run: rm -rf */obj
       - name: Build Project
         uses: cake-build/cake-action@v2.0.0
         with:

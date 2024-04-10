@@ -48,7 +48,6 @@ jobs:
           cp ./bin/NLog.dll .temp-files/modweaver/libs
           cp ./bin/Tomlyn.dll .temp-files/modweaver/libs
           cp ./bin/RestSharp.dll .temp-files/modweaver/libs
-          cp ./bin/System.Net.Http.dll .temp-files/modweaver/libs
           cp ./doorstop/* .temp-files/
           echo "Done"
       - name: Upload Artifact

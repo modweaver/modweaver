@@ -32,7 +32,7 @@ jobs:
           mkdir .temp-files/modweaver
           mkdir .temp-files/modweaver/libs
           mkdir .temp-files/modweaver/mods
-          echo "${{ github.ref_name }}:${{ github.sha }}" > .temp-files/.modweaver_version_do_not_touch
+          echo "${{ github.ref_name }}:${{ github.sha }}" > .temp-files/modweaver/.modweaver_version_do_not_touch
           tree .temp-files
           echo "Begin copying files to artifact dir"
           cp ./bin/0Harmony.dll .temp-files/modweaver/libs

@@ -13,6 +13,7 @@ namespace Doorstop {
     public class Entrypoint {
         private static bool hasLoadedCore;
         private static string preloaderPath;
+        private static string modLibPath = "modloader/modLibs";
 
         // need for doorstop entrypoint
         public static void Start() {
@@ -33,7 +34,11 @@ namespace Doorstop {
             var ass = Assembly.LoadFile(harmonyFile);
             //File.WriteAllText("modweaver/latest.log", $"[modweaver] Assembly@ : {ass.FullName}");
             HarmonyFileLog.Enabled = true;
-            AppDomain.CurrentDomain.AssemblyResolve += resolveCurrentDirectory;
+            modLibPath = Path.Combine(gameDirectory, "modweaver/modLibs");
+            if (!Directory.Exists(modLibPath)) {
+                Directory.CreateDirectory(modLibPath);
+            }
+            AppDomain.CurrentDomain.AssemblyResolve += customResolver;
             // https://harmony.pardeike.net/articles/patching-edgecases.html#patching-too-early-missingmethodexception-in-unity
             SceneManager.sceneLoaded += sceneLoadHandler;
         }
@@ -46,7 +51,7 @@ namespace Doorstop {
             hasLoadedCore = true;
         }
 
-        internal static Assembly resolveCurrentDirectory(object _, ResolveEventArgs args) {
+        internal static Assembly customResolver(object _, ResolveEventArgs args) {
             // Can't use Utils here because it's not yet resolved
             var name = new AssemblyName(args.Name);
 
@@ -54,7 +59,12 @@ namespace Doorstop {
                 return Assembly.LoadFile(Path.Combine(preloaderPath, $"{name.Name}.dll"));
             }
             catch (Exception) {
-                return null;
+                try {
+                    return Assembly.LoadFile(Path.Combine(modLibPath, $"{name.Name}.dll"));
+                }
+                catch (Exception) {
+                    return null;
+                }
             }
         }
     }

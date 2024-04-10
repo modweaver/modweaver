@@ -7,6 +7,7 @@ using modweaver.preload;
 using Newtonsoft.Json;
 using NLog;
 using Tomlyn;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace modweaver.core {
     public class CoreMain {
@@ -38,6 +39,26 @@ namespace modweaver.core {
                 using (var manifestStream = asm.GetManifestResourceStream(ModManifest.embeddedResourceName))
                 using (var reader = new StreamReader(manifestStream)) {
                     manifestText = reader.ReadToEnd();
+                }
+                
+                Logger.Debug("Trying to do silly dll loading stuff");
+                var dllLoader = "load_me_pls";
+                foreach (var resource in resources) {
+                    if (resource.StartsWith(dllLoader) && resource.EndsWith(".dll")) {
+                        Logger.Debug("Found loadable DLL {Resource}", resource);
+                        var loaderStream = asm.GetManifestResourceStream(resource);
+                            // get bytes from stream
+                        var bytes = ReadFully(loaderStream);
+                        var name = "";
+                        var ass = Assembly.Load(bytes);
+                        name = ass.GetName().Name + ".dll";
+                        var modLibPath = Path.Combine(Paths.modweaverDir, "modLibs");
+                        var loaderPath = Path.Combine(modLibPath, name);
+                        // write to loaderPath
+                        File.WriteAllBytes(loaderPath, bytes);
+                    } else {
+                        Logger.Debug("Skipping resource for dll loading {Resource}", resource);
+                    }
                 }
 
                 var tmo = new TomlModelOptions();
@@ -91,7 +112,17 @@ namespace modweaver.core {
                 }
             }
         }
+        
+        public static byte[] ReadFully(Stream input)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                input.CopyTo(ms);
+                return ms.ToArray();
+            }
+        }
 
+        
         private static void loadMods() {
             foreach (var discovered in discoveredMods) {
                 var assembly = Assembly.LoadFrom(discovered.Key);

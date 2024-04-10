@@ -51,32 +51,37 @@ namespace modweaver.preload {
             
             // time for updater shennanigans
             if (!fromUpdater) {
-                var needUp = needsUpdate(Path.Combine(gameDirectory, "modweaver/.modweaver_version_do_not_touch"));
-                if (needUp) {
-                    var wc = new WebClient();
-                    if (Directory.Exists(updaterTemp)) {
-                        Directory.Delete(updaterTemp, true);
-                        Directory.CreateDirectory(updaterTemp);
+                try {
+                    var needUp = needsUpdate(Path.Combine(gameDirectory, "modweaver/.modweaver_version_do_not_touch"));
+                    if (needUp) {
+                        var wc = new WebClient();
+                        if (Directory.Exists(updaterTemp)) {
+                            Directory.Delete(updaterTemp, true);
+                            Directory.CreateDirectory(updaterTemp);
+                        }
+                        var zipPath = Path.Combine(updaterTemp, "modweaver.zip");
+                        wc.DownloadFile("https://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip", zipPath);
+                        // extract the zip
+                        var zipExtractionSite = Path.Combine(updaterTemp, "modweaver");
+                        System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, Path.Combine(gameDirectory, "modweaver"));
+                        // copy the files over, retaining the file tree and all directories
+                        foreach (var file in Directory.GetFiles(zipExtractionSite, "*", SearchOption.AllDirectories)) {
+                            var relativePath = Util.getRelativePath(zipExtractionSite, file);
+                            /*if (relativePath.EndsWith("modweaver.preload.dll")) {
+                                relativePath = relativePath.Replace("modweaver.preload.dll", "modweaver.preload_new.dll");
+                            }*/
+                            //!! FIXME ENABLE THE ABOVE IF STUFF BREAKS
+                            var destPath = Path.Combine(gameDirectory, "modweaver", relativePath);
+                            Directory.CreateDirectory(Path.GetDirectoryName(destPath) ?? throw new InvalidOperationException());
+                            File.Copy(file, destPath, true);
+                        }
+
+
+
                     }
-                    var zipPath = Path.Combine(updaterTemp, "modweaver.zip");
-                    wc.DownloadFile("https://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip", zipPath);
-                    // extract the zip
-                    var zipExtractionSite = Path.Combine(updaterTemp, "modweaver");
-                    System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, Path.Combine(gameDirectory, "modweaver"));
-                    // copy the files over, retaining the file tree and all directories
-                    foreach (var file in Directory.GetFiles(zipExtractionSite, "*", SearchOption.AllDirectories)) {
-                        var relativePath = Util.getRelativePath(zipExtractionSite, file);
-                        /*if (relativePath.EndsWith("modweaver.preload.dll")) {
-                            relativePath = relativePath.Replace("modweaver.preload.dll", "modweaver.preload_new.dll");
-                        }*/
-                        //!! FIXME ENABLE THE ABOVE IF STUFF BREAKS
-                        var destPath = Path.Combine(gameDirectory, "modweaver", relativePath);
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath) ?? throw new InvalidOperationException());
-                        File.Copy(file, destPath, true);
-                    }
-                    
-                    
-                    
+                }
+                catch (Exception e) {
+                    File.WriteAllText("modweaver/preloader_updater_error.txt", e.ToString());
                 }
             }
 

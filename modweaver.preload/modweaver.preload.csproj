@@ -196,6 +196,10 @@
         <Reference Include="System.IO.Compression.FileSystem">
             <HintPath>..\packages\40-system.io.compression.filesystem\lib\net40-client\System.IO.Compression.FileSystem.dll</HintPath>
         </Reference>
+        <Reference Include="System.Net.Http">
+            <HintPath>..\packages\system.net.http\4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+        </Reference>
+            
         <!--<Reference Include="0Harmony, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
             <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>
         </Reference>

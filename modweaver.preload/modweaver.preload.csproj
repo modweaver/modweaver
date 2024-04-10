@@ -35,8 +35,10 @@
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\modweaver.core\modweaver.core.csproj"/>
+        <PackageReference Include="40-System.IO.Compression.FileSystem" Version="1.0.0.2" />
         <!-- harmonyx 2.10.2 -->
         <PackageReference Include="HarmonyX" Version="2.10.2"/>
+        <PackageReference Include="RestSharp" Version="110.2.1-alpha.0.20" />
         <!-- SpiderHeck.GameLibs 99.1.6 -->
         <PackageReference Include="SpiderHeck.GameLibs" Version="99.1.6"/>
         <!-- Mono.Cecil 0.11.4 -->
@@ -49,6 +51,8 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <!-- NLog 5.2.6 -->
         <PackageReference Include="NLog" Version="5.2.6"/>
+        <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+        <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
         <!-- Tomlyn 0.16.2 -->
         <PackageReference Include="Tomlyn" Version="0.16.2"/>
         <Reference Include="0Harmony">
@@ -179,6 +183,18 @@
         </Reference>
         <Reference Include="UnityEngine.UI">
             <HintPath>..\packages\spiderheck.gamelibs\99.1.6\lib\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="RestSharp">
+            <HintPath>..\packages\restsharp\110.2.1-alpha.0.20\lib\net48\RestSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="System.IO.Compression">
+            <HintPath>..\packages\system.io.compression\4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+        </Reference>
+        <Reference Include="System.IO.Compression.ZipFile">
+            <HintPath>..\packages\system.io.compression.zipfile\4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+        </Reference>
+        <Reference Include="System.IO.Compression.FileSystem">
+            <HintPath>..\packages\40-system.io.compression.filesystem\lib\net40-client\System.IO.Compression.FileSystem.dll</HintPath>
         </Reference>
         <!--<Reference Include="0Harmony, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
             <HintPath>..\packages\HarmonyX.2.10.2\lib\net45\0Harmony.dll</HintPath>

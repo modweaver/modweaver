@@ -22,7 +22,7 @@ namespace modweaver.core {
 
         private static void discoverMods() {
             discoveredMods.Clear();
-            var modsPath = Path.Combine(Paths.modweaverDir, ConfigHandler.getConfig().relativeModsDir);
+            var modsPath = Path.Combine(Paths.modweaverDir, ConfigHandler.getConfig().modsDirectory);
             if (!Directory.Exists(modsPath)) Directory.CreateDirectory(modsPath);
             foreach (var dllPath in Directory.EnumerateFiles(modsPath, "*.dll", SearchOption.AllDirectories)) {
                 var dllName = Path.GetFileName(dllPath);

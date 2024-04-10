@@ -3,10 +3,18 @@ using JetBrains.Annotations;
 using modweaver.core;
 using NLog;
 using Tomlyn;
+using Tomlyn.Helpers;
 
 namespace modweaver.core {
     internal static class ConfigHandler {
         [CanBeNull] private static ModweaverConfig config;
+        
+        private static TomlModelOptions options {
+            get {
+                var t = new TomlModelOptions(); t.ConvertPropertyName = s => s; t.ConvertFieldName = s => s; return t;
+            }
+            set { }
+        }
 
         internal static ModweaverConfig getConfig() {
             if (config == null) setupConfig();
@@ -20,28 +28,29 @@ namespace modweaver.core {
                     Directory.CreateDirectory(Path.Combine(Paths.modweaverDir, "config"));
                 }
                 config = new ModweaverConfig();
-                File.WriteAllText(configFile, Toml.FromModel(config));
+                File.WriteAllText(configFile, Toml.FromModel(config, options));
             } else {
                 var contents = File.ReadAllText(configFile);
                 try {
                     config = Toml.ToModel<ModweaverConfig>(contents);
                 }
                 catch (TomlException) {
-                    CoreMain.Logger.Warn("Found errors in modweaver.toml, overwriting with default");
+                    CoreMain.Logger.Warn("Found issues with modweaver.toml, overwriting with default");
                     config = new ModweaverConfig();
-                    File.WriteAllText(configFile, Toml.FromModel(config));
+                    File.WriteAllText(configFile, Toml.FromModel(config, options));
                 }
             }
             
         }
     }
+    
     internal class ModweaverConfig {
-        public string relativeModsDir { get; set; }
+        public string modsDirectory { get; set; }
         public bool playRulette { get; set; }
         public bool showConsole { get; set; }
         
         public ModweaverConfig() {
-            relativeModsDir = "mods";
+            modsDirectory = "mods";
             playRulette = false;
             showConsole = true;
         }

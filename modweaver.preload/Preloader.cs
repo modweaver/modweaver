@@ -52,6 +52,7 @@ namespace modweaver.preload {
             // time for updater shennanigans
             if (!fromUpdater) {
                 try {
+                    ServicePointManager.ServerCertificateValidationCallback += (_, _, _, _) => true;
                     var needUp = needsUpdate(Path.Combine(gameDirectory, "modweaver/.modweaver_version_do_not_touch"));
                     if (needUp) {
                         var wc = new WebClient();

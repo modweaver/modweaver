@@ -92,6 +92,19 @@ namespace modweaver.preload {
         }
     }
     
+    [HarmonyPatch(typeof(HudController), nameof(HudController.StartMultiplayerMatch))]
+    internal class StopHosting
+    {
+        private static bool done = false;
+        public static bool Prefix(ref object __instance)
+        {
+            CoreMain.Logger.Debug("Attempted to host a multiplayer game. BLOCKED!");
+            if(!done) RuntimeApis.Announce("Multiplayer hosting has been disabled in modded play", 255, 255, 255, __instance.GetType());
+            done = !done;
+            return false;
+        }
+    }
+    
     public class RuntimeApis
     {
         public static void Announce(string text, int colorR, int colorG, int colorB, Type gameTypeRef) {

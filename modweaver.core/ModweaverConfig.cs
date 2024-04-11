@@ -34,9 +34,8 @@ namespace modweaver.core {
                 try {
                     config = Toml.ToModel<ModweaverConfig>(contents);
                 }
-                catch (TomlException e) {
+                catch (TomlException) {
                     CoreMain.Logger.Warn("Found issues with modweaver.toml, overwriting with default");
-                    CoreMain.Logger.Warn(e);
                     config = new ModweaverConfig();
                     File.WriteAllText(configFile, Toml.FromModel(config, options));
                 }

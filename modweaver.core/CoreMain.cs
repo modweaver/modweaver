@@ -143,7 +143,7 @@ namespace modweaver.core {
                 var mainClassType = types[0];
 
                 if (types.Length > 1) {
-                    if (ConfigHandler.getConfig().playRulette) {
+                    if (ConfigHandler.getConfig().playRoulette) {
                         Logger.Warn("Mod {} contains multiple main classes! Time to play rulette!",
                             manifest.metadata.title);
                         var rand = new Random();

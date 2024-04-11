@@ -223,14 +223,16 @@ namespace modweaver.core {
                 ui.CreateParagraph($"Version: {mw.version}");
                 ui.CreateParagraph($"Designed for SpiderHeck version: {mw.gameVersion}");
                 ui.CreateParagraph($"ID: {mw.id}");
-                //ui.CreateDivider();
             });
             
             foreach (var mod in mods) {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
                     var ui = Announcer.ModsPopup(mod.Metadata.title);
                     ui.CreateDivider();
-                    if (!string.IsNullOrWhiteSpace(mod.Metadata.description))  ui.CreateParagraph(mod.Metadata.description);
+                    if (!string.IsNullOrWhiteSpace(mod.Metadata.description)) {
+                        ui.CreateParagraph($"{mod.Metadata.description}");
+                        ui.CreateParagraph(" ");
+                    }
                     ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
                     ui.CreateParagraph($"Version: {mod.Metadata.version}");
                     ui.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");

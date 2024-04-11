@@ -106,8 +106,8 @@ namespace modweaver.core {
                         Logger.Warn("Mod {} is incompatible with mod {}! Not loading either mod.",
                             manifest.metadata.id, incompat);
                         toRemove.Add(path);
-                        var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
-                        toRemove.Add(wawa.Key);
+                        // var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
+                        // toRemove.Add(wawa.Key);
                         break;
                     }
                 }

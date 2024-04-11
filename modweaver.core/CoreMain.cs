@@ -100,15 +100,20 @@ namespace modweaver.core {
                 var path = kv.Key;
                 var manifest = kv.Value;
                 var incompats = manifest.incompatibilities;
+                var toRemove = new List<string>();
                 foreach (var incompat in incompats) {
                     if (discoveredMods.Values.Any(m => m.metadata.id == incompat)) {
                         Logger.Warn("Mod {} is incompatible with mod {}! Not loading either mod.",
-                            manifest.metadata.title, incompat);
-                        discoveredMods.Remove(path);
+                            manifest.metadata.id, incompat);
+                        toRemove.Add(path);
                         var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
-                        discoveredMods.Remove(wawa.Key);
+                        toRemove.Add(wawa.Key);
                         break;
                     }
+                }
+                
+                foreach (var mod in toRemove) {
+                    if (discoveredMods.ContainsKey(mod)) discoveredMods.Remove(mod);
                 }
             }
         }
@@ -240,8 +245,6 @@ namespace modweaver.core {
                     mod.OnGUI(ui);
                 });
             }
-
-            
         }
     }
 }

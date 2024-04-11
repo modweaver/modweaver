@@ -211,17 +211,18 @@ namespace modweaver.core {
             
             ModsMenu.instance.CreateButton(sh.title, () => {
                 var ui = Announcer.ModsPopup(sh.title);
-                ui.CreateParagraph($"ID: {sh.id}");
-                ui.CreateParagraph($"Version: {sh.version}");
+                ui.CreateDivider();
                 ui.CreateParagraph($"Authors: {string.Join(", ", sh.authors)}");
-                //ui.CreateDivider();
+                ui.CreateParagraph($"Version: {sh.version}");
+                ui.CreateParagraph($"ID: {sh.id}");
             });
             ModsMenu.instance.CreateButton(mw.title, () => {
                 var ui = Announcer.ModsPopup(mw.title);
-                ui.CreateParagraph($"ID: {mw.id}");
-                ui.CreateParagraph($"Version: {mw.version}");
+                ui.CreateDivider();
                 ui.CreateParagraph($"Authors: {string.Join(", ", mw.authors)}");
+                ui.CreateParagraph($"Version: {mw.version}");
                 ui.CreateParagraph($"Designed for SpiderHeck version: {mw.gameVersion}");
+                ui.CreateParagraph($"ID: {mw.id}");
                 //ui.CreateDivider();
             });
             
@@ -229,10 +230,11 @@ namespace modweaver.core {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
                     var ui = Announcer.ModsPopup(mod.Metadata.title);
                     ui.CreateDivider();
-                    ui.CreateParagraph($"ID: {mod.Metadata.id}");
-                    ui.CreateParagraph($"Version: {mod.Metadata.version}");
+                    if (!string.IsNullOrWhiteSpace(mod.Metadata.description))  ui.CreateParagraph(mod.Metadata.description);
                     ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
+                    ui.CreateParagraph($"Version: {mod.Metadata.version}");
                     ui.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
+                    ui.CreateParagraph($"ID: {mod.Metadata.id}");
                     mod.OnGUI(ui);
                 });
             }

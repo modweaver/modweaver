@@ -11,6 +11,7 @@ namespace modweaver.core {
             public string id { get; set; }
             public string version { get; set; }
             public string title { get; set; }
+            public string description { get; set; }
             public List<string> authors { get; set; }
             public string gameVersion { get; set; }
         }

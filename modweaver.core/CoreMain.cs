@@ -96,25 +96,25 @@ namespace modweaver.core {
             }
             
             //TODO: verify dependencies
+            var toRemove = new List<string>();
             foreach (var kv in discoveredMods) {
                 var path = kv.Key;
                 var manifest = kv.Value;
                 var incompats = manifest.incompatibilities;
-                var toRemove = new List<string>();
                 foreach (var incompat in incompats) {
                     if (discoveredMods.Values.Any(m => m.metadata.id == incompat)) {
                         Logger.Warn("Mod {} is incompatible with mod {}! Not loading either mod.",
                             manifest.metadata.id, incompat);
                         toRemove.Add(path);
-                        // var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
-                        // toRemove.Add(wawa.Key);
+                        var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
+                        toRemove.Add(wawa.Key);
                         break;
                     }
                 }
+            }
                 
-                foreach (var mod in toRemove) {
-                    if (discoveredMods.ContainsKey(mod)) discoveredMods.Remove(mod);
-                }
+            foreach (var mod in toRemove) {
+                if (discoveredMods.ContainsKey(mod)) discoveredMods.Remove(mod);
             }
         }
         

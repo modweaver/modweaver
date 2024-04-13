@@ -1,12 +1,15 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using HarmonyLib.Tools;
 using modweaver.core;
 using modweaver.preload;
 using RestSharp;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 namespace modweaver.preload {
     internal class CommitsResponse {
@@ -26,19 +29,33 @@ namespace modweaver.preload {
             // api.github.com/repos/modweaver/modweaver/commits/{currentRef}
             // then return true
             
-            // make a request to the github api to get the latest commit hash
-            var options = new RestClientOptions("https://api.github.com");
-            var client = new RestClient(options);
-            var response = client.GetJson<CommitsResponse>($"repos/modweaver/modweaver/commits/{currentRef}");
-            if (response.sha != currentHash) {
-                Console.WriteLine("[modweaver.preload] Needs update");
-                Console.WriteLine("[modweaver.preload] Current: " + currentHash);
-                Console.WriteLine("[modweaver.preload] Latest: " + response.sha);
-                return true;
-            }
-            Console.WriteLine("[modweaver.preload] No update needed");
-            
-            return false;
+            // set security policies
+            ServicePointManager.ServerCertificateValidationCallback = (_, _, _, _) => true;
+            // make a request to the github api to get the latest commit hash#
+            var http = new HttpClient();
+            http.DefaultRequestHeaders.Add("User-Agent", "modweaver");
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            System.Environment.SetEnvironmentVariable("MONO_TLS_PROVIDER", "legacy");
+            var req = UnityWebRequest.Get("http://api.github.com/repos/modweaver/modweaver/commits/" + currentRef);
+            var req2 = req.SendWebRequest();
+            var awa = false;
+            req2.completed += (op) => {
+                var resp = req.downloadHandler.text;
+                //var resp = http.GetAsync($"http://api.github.com/repos/modweaver/modweaver/commits/{currentRef}").Result;
+                var response = Newtonsoft.Json.JsonConvert.DeserializeObject<CommitsResponse>(resp);
+                /*var options = new RestClientOptions("https://api.github.com");
+                var client = new RestClient(options);
+                var response = client.GetJson<CommitsResponse>($"repos/modweaver/modweaver/commits/{currentRef}");*/
+                if (response.sha != currentHash) {
+                    Console.WriteLine("[modweaver.preload] Needs update");
+                    Console.WriteLine("[modweaver.preload] Current: " + currentHash);
+                    Console.WriteLine("[modweaver.preload] Latest: " + response.sha);
+                    awa = true;
+                }
+                Console.WriteLine("[modweaver.preload] No update needed");
+            };
+            while (!req2.isDone) { }
+            return awa;
         }
         
         public static void initPreloader(string plpath, bool fromUpdater = false) {
@@ -52,7 +69,7 @@ namespace modweaver.preload {
             // time for updater shennanigans
             if (!fromUpdater) {
                 try {
-                    ServicePointManager.ServerCertificateValidationCallback += (_, _, _, _) => true;
+                    ServicePointManager.ServerCertificateValidationCallback = (_, _, _, _) => true;
                     var needUp = needsUpdate(Path.Combine(gameDirectory, "modweaver/.modweaver_version_do_not_touch"));
                     if (needUp) {
                         var wc = new WebClient();
@@ -61,7 +78,7 @@ namespace modweaver.preload {
                             Directory.CreateDirectory(updaterTemp);
                         }
                         var zipPath = Path.Combine(updaterTemp, "modweaver.zip");
-                        wc.DownloadFile("https://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip", zipPath);
+                        wc.DownloadFile("http://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip", zipPath);
                         // extract the zip
                         var zipExtractionSite = Path.Combine(updaterTemp, "modweaver");
                         System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, Path.Combine(gameDirectory, "modweaver"));

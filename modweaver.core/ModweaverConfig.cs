@@ -8,13 +8,6 @@ using Tomlyn.Helpers;
 namespace modweaver.core {
     internal static class ConfigHandler {
         [CanBeNull] private static ModweaverConfig config;
-        
-        private static TomlModelOptions options {
-            get {
-                var t = new TomlModelOptions(); t.ConvertPropertyName = s => s; t.ConvertFieldName = s => s; return t;
-            }
-            set { }
-        }
 
         internal static ModweaverConfig getConfig() {
             if (config == null) setupConfig();
@@ -28,7 +21,7 @@ namespace modweaver.core {
                     Directory.CreateDirectory(Path.Combine(Paths.modweaverDir, "config"));
                 }
                 config = new ModweaverConfig();
-                File.WriteAllText(configFile, Toml.FromModel(config, options));
+                File.WriteAllText(configFile, Toml.FromModel(config));
             } else {
                 var contents = File.ReadAllText(configFile);
                 try {
@@ -37,7 +30,7 @@ namespace modweaver.core {
                 catch (TomlException) {
                     CoreMain.Logger.Warn("Found issues with modweaver.toml, overwriting with default");
                     config = new ModweaverConfig();
-                    File.WriteAllText(configFile, Toml.FromModel(config, options));
+                    File.WriteAllText(configFile, Toml.FromModel(config));
                 }
             }
             

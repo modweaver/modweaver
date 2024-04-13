@@ -39,12 +39,12 @@ namespace modweaver.core {
     
     internal class ModweaverConfig {
         public string modsDirectory { get; set; }
-        public bool playRulette { get; set; }
+        public bool playRoulette { get; set; }
         public bool showConsole { get; set; }
         
         public ModweaverConfig() {
             modsDirectory = "mods";
-            playRulette = false;
+            playRoulette = false;
             showConsole = true;
         }
         

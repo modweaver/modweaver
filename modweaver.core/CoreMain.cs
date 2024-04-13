@@ -96,6 +96,7 @@ namespace modweaver.core {
             }
             
             //TODO: verify dependencies
+            var toRemove = new List<string>();
             foreach (var kv in discoveredMods) {
                 var path = kv.Key;
                 var manifest = kv.Value;
@@ -103,13 +104,17 @@ namespace modweaver.core {
                 foreach (var incompat in incompats) {
                     if (discoveredMods.Values.Any(m => m.metadata.id == incompat)) {
                         Logger.Warn("Mod {} is incompatible with mod {}! Not loading either mod.",
-                            manifest.metadata.title, incompat);
-                        discoveredMods.Remove(path);
+                            manifest.metadata.id, incompat);
+                        toRemove.Add(path);
                         var wawa = discoveredMods.ToList().Find(predicate => predicate.Value.metadata.id == incompat);
-                        discoveredMods.Remove(wawa.Key);
+                        toRemove.Add(wawa.Key);
                         break;
                     }
                 }
+            }
+                
+            foreach (var mod in toRemove) {
+                if (discoveredMods.ContainsKey(mod)) discoveredMods.Remove(mod);
             }
         }
         
@@ -143,7 +148,7 @@ namespace modweaver.core {
                 var mainClassType = types[0];
 
                 if (types.Length > 1) {
-                    if (ConfigHandler.getConfig().playRulette) {
+                    if (ConfigHandler.getConfig().playRoulette) {
                         Logger.Warn("Mod {} contains multiple main classes! Time to play rulette!",
                             manifest.metadata.title);
                         var rand = new Random();
@@ -211,33 +216,35 @@ namespace modweaver.core {
             
             ModsMenu.instance.CreateButton(sh.title, () => {
                 var ui = Announcer.ModsPopup(sh.title);
-                ui.CreateParagraph($"ID: {sh.id}");
-                ui.CreateParagraph($"Version: {sh.version}");
+                ui.CreateDivider();
                 ui.CreateParagraph($"Authors: {string.Join(", ", sh.authors)}");
-                //ui.CreateDivider();
+                ui.CreateParagraph($"Version: {sh.version}");
+                ui.CreateParagraph($"ID: {sh.id}");
             });
             ModsMenu.instance.CreateButton(mw.title, () => {
                 var ui = Announcer.ModsPopup(mw.title);
-                ui.CreateParagraph($"ID: {mw.id}");
-                ui.CreateParagraph($"Version: {mw.version}");
+                ui.CreateDivider();
                 ui.CreateParagraph($"Authors: {string.Join(", ", mw.authors)}");
+                ui.CreateParagraph($"Version: {mw.version}");
                 ui.CreateParagraph($"Designed for SpiderHeck version: {mw.gameVersion}");
-                //ui.CreateDivider();
+                ui.CreateParagraph($"ID: {mw.id}");
             });
             
             foreach (var mod in mods) {
                 ModsMenu.instance.CreateButton(mod.Metadata.title, () => {
                     var ui = Announcer.ModsPopup(mod.Metadata.title);
                     ui.CreateDivider();
-                    ui.CreateParagraph($"ID: {mod.Metadata.id}");
-                    ui.CreateParagraph($"Version: {mod.Metadata.version}");
+                    if (!string.IsNullOrWhiteSpace(mod.Metadata.description)) {
+                        ui.CreateParagraph($"{mod.Metadata.description}");
+                        ui.CreateParagraph(" ");
+                    }
                     ui.CreateParagraph($"Authors: {string.Join(", ", mod.Metadata.authors)}");
+                    ui.CreateParagraph($"Version: {mod.Metadata.version}");
                     ui.CreateParagraph($"Designed for SpiderHeck version: {mod.Metadata.gameVersion}");
+                    ui.CreateParagraph($"ID: {mod.Metadata.id}");
                     mod.OnGUI(ui);
                 });
             }
-
-            
         }
     }
 }

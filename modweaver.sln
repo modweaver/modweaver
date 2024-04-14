@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2A5A
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
 		install.sh = install.sh
+		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
 Global

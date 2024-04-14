@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Restore Packages
-        run: dotnet restore
+        run: dotnet restore -r win
       - name: Clean
         run: |
           rm -rf modweaver.*/obj

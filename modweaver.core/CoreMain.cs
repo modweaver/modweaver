@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using NLog;
 using Tomlyn;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
+using Logger = NLog.Logger;
+using Random = System.Random;
 
 namespace modweaver.core {
     public class CoreMain {
@@ -255,9 +258,20 @@ namespace modweaver.core {
                 downloadPath = Path.Combine(downloadPath, "modweaver.zip");
                 
                 Logger.Debug("Showing update dialog");
-                Announcer.ConfirmationPopup("A new ModWeaver version is available! Do you want to update?\nNote: you will need to restart the game to apply the update",
-                    null, () => UpdateHelper.downloadUpdateZip(downloadPath));
+                Announcer.TwoOptionsPopup(
+                    "A new ModWeaver version is available! Do you want to update?\nNote: you will need to restart the game to apply the update",
+                    "Yes", "No",
+                    () => UpdateHelper.downloadUpdateZip(downloadPath, showExitPopup), () => { },
+                    null);
             });
+        }
+
+        private static void showExitPopup() {
+            Announcer.TwoOptionsPopup(
+                "The update has been downloaded!\nDo you want to exit the game now?", 
+                "Yes", "No", 
+                Application.Quit, () => { }, 
+                null);
         }
     }
 }

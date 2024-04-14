@@ -40,7 +40,7 @@ namespace modweaver.core {
             };
         }
         
-        public static void downloadUpdateZip(string downloadToPath) {
+        public static void downloadUpdateZip(string downloadToPath, Action onDownloadFinished) {
             logger.Debug("Starting download...");
             const string url = "https://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip";
             var req = UnityWebRequest.Get(url);
@@ -48,7 +48,8 @@ namespace modweaver.core {
             operation.completed += op => {
                 logger.Debug("Finished downloading zip - {Size} bytes", req.downloadHandler.data.Length);
                 File.WriteAllBytes(downloadToPath, req.downloadHandler.data);
-                logger.Debug("Written to fiel {Path}", downloadToPath);
+                logger.Debug("Written update to file {Path}", downloadToPath);
+                onDownloadFinished();
             };
         }
     }

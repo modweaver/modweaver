@@ -7,11 +7,13 @@ using UnityEngine.Networking;
 
 namespace modweaver.core {
     public class UpdateHelper {
+        public static string refName = "main";
         private static Logger logger = LogManager.GetCurrentClassLogger();
         
         public static void checkForNewVersion(string versionFile, Action doUpdate) {
             var current = File.ReadAllText(versionFile).TrimEnd('\n');
             var currentRef = current.Split(':')[0];
+            refName = currentRef;
             var currentHash = current.Split(':')[1];
             // version file is in the format of "branch:hash"
             // if the hash is different from the latest
@@ -42,7 +44,7 @@ namespace modweaver.core {
         
         public static void downloadUpdateZip(string downloadToPath, Action onDownloadFinished) {
             logger.Debug("Starting download...");
-            const string url = "https://nightly.link/modweaver/modweaver/workflows/build/main/Modweaver%20ZIP.zip";
+            string url = $"https://nightly.link/modweaver/modweaver/workflows/build/{refName}/Modweaver%20ZIP.zip";
             var req = UnityWebRequest.Get(url);
             var operation = req.SendWebRequest();
             operation.completed += op => {

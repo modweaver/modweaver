@@ -10,7 +10,7 @@ namespace modweaver.core {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         
         public static void checkForNewVersion(string versionFile, Action doUpdate) {
-            var current = File.ReadAllText(versionFile);
+            var current = File.ReadAllText(versionFile).TrimEnd('\n');
             var currentRef = current.Split(':')[0];
             var currentHash = current.Split(':')[1];
             // version file is in the format of "branch:hash"

@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using modweaver.core;
 
 namespace modweaver.preload {
     public static class ModweaverEnvironment {
@@ -26,9 +25,9 @@ namespace modweaver.preload {
                 array = Array.Empty<string>();
             doorstopDllSearchDirs = array;
 
-            Paths.spiderheckDir = Path.GetDirectoryName(doorstopGameExecutable);
-            Paths.modweaverDir = Path.Combine(Paths.spiderheckDir, "modweaver");
-            Paths.libsDir = Path.Combine(Paths.modweaverDir, "libs");
+            // Paths.spiderheckDir = Path.GetDirectoryName(doorstopGameExecutable);
+            // Paths.modweaverDir = Path.Combine(Paths.spiderheckDir, "modweaver");
+            // Paths.libsDir = Path.Combine(Paths.modweaverDir, "libs");
         }
     }
 }

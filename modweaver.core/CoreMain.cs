@@ -246,5 +246,18 @@ namespace modweaver.core {
                 });
             }
         }
+
+        public static void checkForUpdates() {
+            var versionFile = Path.Combine(Paths.modweaverDir, ".modweaver_version_do_not_touch");
+            UpdateHelper.checkForNewVersion(versionFile, () => {
+                var downloadPath = Path.Combine(Paths.modweaverDir, "temp-updater");
+                if (!Directory.Exists(downloadPath)) Directory.CreateDirectory(downloadPath);
+                downloadPath = Path.Combine(downloadPath, "modweaver.zip");
+                
+                Logger.Debug("Showing update dialog");
+                Announcer.ConfirmationPopup("A new ModWeaver version is available! Do you want to update?\nNote: you will need to restart the game to apply the update",
+                    null, () => UpdateHelper.downloadUpdateZip(downloadPath));
+            });
+        }
     }
 }

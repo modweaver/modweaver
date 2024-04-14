@@ -34,11 +34,10 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\modweaver.core\modweaver.core.csproj"/>
+        <!--<ProjectReference Include="..\modweaver.core\modweaver.core.csproj"/>-->
         <PackageReference Include="40-System.IO.Compression.FileSystem" Version="1.0.0.2" />
         <!-- harmonyx 2.10.2 -->
         <PackageReference Include="HarmonyX" Version="2.10.2"/>
-        <PackageReference Include="RestSharp" Version="110.2.1-alpha.0.20" />
         <!-- SpiderHeck.GameLibs 99.1.6.1 -->
         <PackageReference Include="SpiderHeck.GameLibs" Version="99.1.6.1"/>
         <!-- Mono.Cecil 0.11.4 -->

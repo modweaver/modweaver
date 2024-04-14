@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using HarmonyLib.Tools;
-using modweaver.core;
 using modweaver.preload;
 using UnityEngine.SceneManagement;
 

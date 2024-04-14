@@ -67,6 +67,14 @@ namespace modweaver.preload {
             CoreMain.addModsToMenu();
         }
     }
+
+    [HarmonyPatch(typeof(GameController), "Start")]
+    public static class CheckUpdates {
+        public static void Postfix() {
+            CoreMain.checkForUpdates();
+        }
+        
+    }
     
     [HarmonyPatch(typeof(SteamLeaderboards), "UpdateScore")]
     internal class DisableLeaderboard

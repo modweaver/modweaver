@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,9 +9,17 @@ namespace modweaver.core {
     public class UpdateHelper {
         public static string refName = "main";
         private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static string curVersion = "";
+
+        public static string getVersionString(string versionFile) {
+            if (curVersion == "") {
+                curVersion = File.ReadAllText(versionFile).TrimEnd('\n');
+            }
+            return curVersion;
+        }
         
         public static void checkForNewVersion(string versionFile, Action doUpdate) {
-            var current = File.ReadAllText(versionFile).TrimEnd('\n');
+            var current = getVersionString(versionFile)
             var currentRef = current.Split(':')[0];
             refName = currentRef;
             var currentHash = current.Split(':')[1];

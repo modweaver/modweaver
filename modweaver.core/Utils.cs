@@ -3,7 +3,7 @@ using System.IO;
 
 namespace modweaver.core {
     public class Utils {
-        public const string version = "0.1.0";
+        public static string version = UpdateHelper.getVersionString(Path.Combine(Paths.modweaverDir, ".modweaver_version_do_not_touch"));
     }
 
     public static class Paths {

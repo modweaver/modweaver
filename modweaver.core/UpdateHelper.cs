@@ -19,7 +19,7 @@ namespace modweaver.core {
         }
         
         public static void checkForNewVersion(string versionFile, Action doUpdate) {
-            var current = getVersionString(versionFile)
+            var current = getVersionString(versionFile);
             var currentRef = current.Split(':')[0];
             refName = currentRef;
             var currentHash = current.Split(':')[1];

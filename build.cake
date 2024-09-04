@@ -1,4 +1,4 @@
-
+//
 //#load nuget:?package=StyleCop.Error.MSBuild&version=1.0.0
 
 var target = Argument("target", "Build");
